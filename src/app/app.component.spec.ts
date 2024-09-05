@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'moving' title`, () => {
+  it(`should have the 'SMS_FrontEnd' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('moving');
+    expect(app.title).toEqual('SMS_FrontEnd');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, moving');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, SMS_FrontEnd');
   });
 });

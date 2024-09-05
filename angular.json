@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "moving": {
+    "SMS_FrontEnd": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/moving",
+            "outputPath": "dist/sms-front-end",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -27,9 +27,12 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+                "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -59,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "moving:build:production"
+              "buildTarget": "SMS_FrontEnd:build:production"
             },
             "development": {
-              "buildTarget": "moving:build:development"
+              "buildTarget": "SMS_FrontEnd:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -92,5 +95,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
