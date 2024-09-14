@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { StudentManagementPageComponent } from '../forms/student-management-page/student-management-page.component';
+import { PageBodyComponent } from "../page-body/page-body.component";
+
+
 
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [StudentManagementPageComponent],
+  imports: [PageBodyComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
