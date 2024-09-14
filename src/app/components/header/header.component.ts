@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { StudentManagementPageComponent } from "../student-management-page/student-management-page.component";
+import { StudentManagementPageComponent } from '../forms/student-management-page/student-management-page.component';
+
 
 @Component({
   selector: 'app-header',
