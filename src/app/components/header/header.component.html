@@ -1,56 +1,66 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light px-4 " >
-    <a class="navbar-brand" href="#">SMS</a>
-    
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item ">
-          <a class="nav-link" href="#">Dashboard</a>
-        </li>
+<div class="col  bg-light px-4">
 
-        <li class="nav-item">
-          <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Type A
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="#">Dashboard</a></li>
-              <li><a class="dropdown-item" href="#">reports</a></li>
-              <li><a class="dropdown-item" href="#">Event Management </a></li>
-            </ul>
-          </div>
-        </li>
+  <div class="row justify-content-between">
+     <div class="col-4">   <h1>SMS LOGO</h1> </div>
+     <div class="col-5"><h2>{{current_page}}</h2></div>
+  </div>
 
-        <li class="nav-item">
-          <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-              For Students
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="#">Student Management </a></li>
-              <li><a class="dropdown-item" href="#">Class fees Management </a></li>
-              <li><a class="dropdown-item" href="#">Student attendance management</a></li>
-            </ul>
-          </div>
-        </li>
+  <div class="row">
+    <nav class="navbar navbar-expand-lg navbar-light " >
+      <a class="navbar-brand" href="#">SMS</a>
+      
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item ">
+            <a class="nav-link" href="#" (click)="change_page('Dashboard')">Dashboard</a>
+          </li>
+  
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Type A
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#" (click)="change_page('Reports')">Reports</a></li>
+                <li><a class="dropdown-item" href="#" (click)="change_page('Event Management')">Event Management </a></li>
+              </ul>
+            </div>
+          </li>
+  
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                For Students
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#" (click)="change_page('Student Management')">Student Management </a></li>
+                <li><a class="dropdown-item" href="#" (click)="change_page('Class Fees Management')">Class Fees Management </a></li>
+                <li><a class="dropdown-item" href="#" (click)="change_page('Student Attendance Management')">Student Attendance Management</a></li>
+              </ul>
+            </div>
+          </li>
+  
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                Type c
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#" (click)="change_page('Class Management')">Class Management</a></li>
+                <li><a class="dropdown-item" href="#" (click)="change_page('User Management')">User Management</a></li>
+                <li><a class="dropdown-item" href="#" (click)="change_page('Tutor Management')">Tutor Management</a></li>
+              </ul>
+            </div>
+            
+          </li>
+  
+        </ul>
+      </div>
+      <button type="button" class="btn btn-dark">Profile</button>
+    </nav>
+  </div>
+</div>
 
-        <li class="nav-item">
-          <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
-              Type c
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="#">Class Management</a></li>
-              <li><a class="dropdown-item" href="#">User Management</a></li>
-              <li><a class="dropdown-item" href="#">Tutor Management</a></li>
-            </ul>
-          </div>
-          
-        </li>
-
-      </ul>
-    </div>
-    <button type="button" class="btn btn-dark">Profile</button>
-  </nav>
 
 
 <app-page-body></app-page-body>

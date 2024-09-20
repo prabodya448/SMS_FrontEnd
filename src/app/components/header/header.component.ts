@@ -13,5 +13,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+ current_page:string = "Dashboard";
 
+ change_page (name:string){
+  this.current_page = name;
+ }
 }
