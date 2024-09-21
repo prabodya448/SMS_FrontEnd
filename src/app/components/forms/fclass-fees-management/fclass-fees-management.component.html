@@ -1,3 +1,35 @@
-<h1>Class fees management</h1>
+<h1 class="text-center">Class fees management</h1>
 <hr>
-<!-- vimukthi aiya -->
+
+<form class="row g-3 needs-validation" novalidate>
+  <div class="col-md-2">
+    <label class="form-label text-start d-block">Student ID</label>
+    <input type="number" class="form-control" id="classFeeSID" placeholder="0000" required>
+  </div>
+
+  <div class="col-md-3">
+    <label class="form-label text-start d-block">Class Name</label>
+    <input type="text" class="form-control" id="classfeeClassName" placeholder="Enter Class Name" required>
+  </div>
+
+  <div class="col-md-2">
+    <label class="form-label text-start d-block">Payment Month</label>
+    <select class="form-select" id="classfeeSelectMonth" required>
+      <option selected disabled value="">Pick a Month</option>
+      <option>January</option>
+      <option>February</option>
+    </select>
+  </div>
+
+  <div class="col-md-2">
+    <label class="form-label text-start d-block">Class Fee</label>
+    <div class="input-group">
+      <span class="input-group-text">Rs.</span>
+      <input type="number" class="form-control text-end" id="classfeeEnterFee" placeholder="0.00" min="0" step="0.01" required>
+    </div>
+  </div>
+</form>
+
+<div class="position-fixed bottom-0 end-0 p-5">
+  <button class="btn btn-primary" type="submit">Submit</button>
+</div>
