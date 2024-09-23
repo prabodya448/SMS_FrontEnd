@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './tutor-management.component.css'
 })
 export class TutorManagementComponent {
-
+  phoneNumber: string = '';
 }

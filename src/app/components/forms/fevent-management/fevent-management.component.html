@@ -1,3 +1,35 @@
 <h1>Event Management</h1>
 <hr>
-<h3>FORMS WILL APPEAR HERE....</h3>
+
+<form class="row g-3 needs-validation" novalidate>
+    <div class="col-md-6">
+      <label class="form-label text-start d-block">Title</label>
+      <input type="text" class="form-control" id="eventTitle" placeholder="Enter title" required>
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label text-start d-block">Start Date Time</label>
+        <input type="datetime-local" class="form-control" id="eventStartDateTime" required>
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label text-start d-block">End Date Time</label>
+        <input type="datetime-local" class="form-control" id="eventEndDateTime">
+    </div>
+  
+    <div class="col-md-6">
+        <label class="form-label text-start d-block">Description</label>
+        <textarea type="text" class="form-control" id="EventDescription"> </textarea>
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label text-start d-block">Image</label>
+        <input class="form-control" type="file" id="eventImage" accept="image/*">
+    </div>
+</form>
+
+<div class="position-fixed bottom-0 end-0 p-5">
+    <button class="btn btn-danger" type="submit" style="width: 100px;">Cancel</button>
+    &nbsp;&nbsp;
+    <button class="btn btn-primary" type="submit" style="width: 100px;">Save</button>
+</div>
