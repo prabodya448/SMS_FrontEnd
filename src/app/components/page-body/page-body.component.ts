@@ -7,11 +7,13 @@ import { FuserManagementComponent } from "../forms/fuser-management/fuser-manage
 import { FclassManagementComponent } from "../forms/fclass-management/fclass-management.component";
 import { FeventManagementComponent} from "../forms/fevent-management/fevent-management.component";
 import{TutorManagementComponent} from "../forms/tutor-management/tutor-management.component";
+import{FstudentAttendanceManagementComponent} from "../forms/fstudent-attendance-management/fstudent-attendance-management.component";
+
 
 @Component({
   selector: 'app-page-body',
   standalone: true,
-  imports: [SearchBottonComponent, SearchListComponent, FstudentManagementComponent, FclassFeesManagementComponent, FuserManagementComponent, FclassManagementComponent,FeventManagementComponent,TutorManagementComponent],
+  imports: [SearchBottonComponent, SearchListComponent, FstudentManagementComponent, FclassFeesManagementComponent,FstudentAttendanceManagementComponent, FuserManagementComponent, FclassManagementComponent,FeventManagementComponent,TutorManagementComponent],
   templateUrl: './page-body.component.html',
   styleUrl: './page-body.component.css'
 })
