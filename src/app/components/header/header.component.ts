@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { PageBodyComponent } from "../page-body/page-body.component";
 import { CommonModule } from '@angular/common';
 
@@ -14,8 +14,12 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent {
  current_page:string = "Dashboard";
-
+ 
  change_page (name:string){
   this.current_page = name;
+  this.homemessage.set(this.current_page);
  }
+ homemessage = signal(this.current_page);
+ 
+ 
 }
