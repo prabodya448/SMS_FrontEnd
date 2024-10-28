@@ -6,19 +6,43 @@
       </div>
       <div class="col-sm-9"> 
        
-        
+          <div *ngIf="message() === 'Student Management'">
+          <app-fstudent-management></app-fstudent-management>
+          </div>
 
- <!--      <app-fclass-fees-management></app-fclass-fees-management>
-      <app-fstudent-management></app-fstudent-management>
-      <app-fclass-management></app-fclass-management>
-      <app-fclass-management></app-fclass-management>
-      <app-fevent-management></app-fevent-management>
-      <app-tutor-management></app-tutor-management>
-      <app-fuser-management></app-fuser-management>-->
-      <!-- thamnge eka witharak uncomment karaganna ee karala hadanna patan ganna -->
+          <div *ngIf="message() === 'Class Management'">
+          <app-fclass-management></app-fclass-management>
+          </div>
+
+          <div *ngIf="message() === 'Event Management'">
+            <app-fevent-management></app-fevent-management>
+          </div>
       
-      <app-fstudent-attendance-management></app-fstudent-attendance-management>
-      
+          <div *ngIf="message() === 'Tutor Management'">
+            <app-tutor-management></app-tutor-management>
+          </div>
+
+          <div *ngIf="message() === 'Class Fees Management'">
+            <app-fclass-fees-management></app-fclass-fees-management>
+          </div>
+
+          <div *ngIf="message() === 'Student Attendance Management'">
+            <app-fstudent-attendance-management></app-fstudent-attendance-management>
+          </div>
+
+          <div *ngIf="message() === 'User Management'">         
+            <app-fuser-management></app-fuser-management>
+          </div>
+
+          <div *ngIf="message() === 'Reports'">         
+            <app-report></app-report>
+          </div>
+
+          <div *ngIf="message() === 'Dashboard'">         
+           <app-fdashboard></app-fdashboard>
+          </div>
+        
       </div>
+ 
     </div>
-  </div>
+</div>
