@@ -1,6 +1,5 @@
 import { Component, input } from '@angular/core';
 import { SearchBottonComponent } from "../search-botton/search-botton.component";
-import { SearchListComponent } from "../search-list/search-list.component";
 import { FstudentManagementComponent } from "../forms/fstudent-management/fstudent-management.component";
 import { FclassFeesManagementComponent } from "../forms/fclass-fees-management/fclass-fees-management.component";
 import { FuserManagementComponent } from "../forms/fuser-management/fuser-management.component";
@@ -11,12 +10,13 @@ import{FstudentAttendanceManagementComponent} from "../forms/fstudent-attendance
 import { CommonModule } from '@angular/common';
 import { ReportComponent } from "../forms/report/report.component";
 import { FdashboardComponent } from "../forms/fdashboard/fdashboard.component";
+import { UserManagementComponent } from "../search list/user-management/user-management.component";
 
 
 @Component({
   selector: 'app-page-body',
   standalone: true,
-  imports: [SearchBottonComponent, SearchListComponent, FstudentManagementComponent, FclassFeesManagementComponent, FstudentAttendanceManagementComponent, FuserManagementComponent, FclassManagementComponent, FeventManagementComponent, TutorManagementComponent, CommonModule, ReportComponent, FdashboardComponent],
+  imports: [SearchBottonComponent, FstudentManagementComponent, FclassFeesManagementComponent, FstudentAttendanceManagementComponent, FuserManagementComponent, FclassManagementComponent, FeventManagementComponent, TutorManagementComponent, CommonModule, ReportComponent, FdashboardComponent, UserManagementComponent],
   templateUrl: './page-body.component.html',
   styleUrl: './page-body.component.css'
 })

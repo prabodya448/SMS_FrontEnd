@@ -2,8 +2,12 @@
     <div class="row content ">
       <div class="col-sm-3 sidenav bg-light ">
         <app-search-botton></app-search-botton>
-        <app-search-list></app-search-list>
+        <div *ngIf="message() === 'User Management'">         
+          <app-user-management></app-user-management>
+        </div>
+        <!-- <app-search-list></app-search-list> -->
       </div>
+      
       <div class="col-sm-9"> 
        
           <div *ngIf="message() === 'Student Management'">
