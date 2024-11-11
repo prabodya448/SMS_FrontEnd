@@ -11,6 +11,6 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
   getUsers():Observable<APIResponseModel>{   //api modle eka api walin ena outeka interface wlt aran
-    return this.http.get<APIResponseModel>("http://freeapi.miniprojectideas.com/api/ClientStrive/GetAllRoles")
+    return this.http.get<APIResponseModel>("http://localhost:8080/api/v1/user/getAllUsers")
   }
 }

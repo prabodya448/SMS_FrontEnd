@@ -1,10 +1,18 @@
 export interface IUser{   //I dala hadanna
-    roleId: number,      //backend api eken ena widihama danna
-    role:string
+    userID : number,
+    userName : string,
+    userRole : string,
+    userDOB : string,
+    userNic : string,
+    userEmail : string,
+    userContact : string,
+    userAge : string    //backend api eken ena widihama danna
+    
 }
 
 export interface APIResponseModel{
+
+   code: string,
    message: string,
-   result : boolean,
-   data : any,
+   content: any
 }

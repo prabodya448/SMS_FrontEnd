@@ -1,14 +1,30 @@
 <div class="col">
+
+  @if (isLoader==true) {
+    <div class="col-12 text-center">
+      <br>
+      <br>
+      <div class="spinner-border spinner-border-sm"></div>
+      <div class="spinner-grow spinner-grow-sm"></div>
+    </div>
+  }@else {
+
+
     @for (item of userList; track $index) {
-        <div class="row">
-            <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">{{item.role}}</h4>       <!-- api wlin ena eka -->
-                  <a href="#" class="card-link">Edit User</a>
-                  <a href="#" class="card-link">Delete User</a>
-                </div>
+      <div class="row">
+          <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">{{item.userName}}</h4>       <!-- api wlin ena eka -->
+                <a href="#" class="card-link">Edit User</a>
+                <a href="#" class="card-link">Delete User</a>
               </div>
-        </div>
-    }
+            </div>
+      </div>
+  }
+
+  }
+
+ 
+
 
 </div>

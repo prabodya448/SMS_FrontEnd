@@ -15,14 +15,18 @@ import { UserService } from '../../../services/user.service';
 export class UserManagementComponent implements OnInit {
 
   userService = inject(UserService);
+  isLoader: boolean = true;  //lode wenw blnn
   userList:IUser[]=[];     //any wenuwata  I interface name eka
   
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe((result:APIResponseModel)=>{     //APIResponce
-      this.userList=result.data;
+      this.userList=result.content;
+      this.isLoader= false;   //load wenw blnn
    },error=>{
     alert('api error')
+    this.isLoader= false; 
+    
    }
   )
    
