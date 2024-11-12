@@ -1,45 +1,62 @@
-<h1>User management</h1>
-<hr>
-<!-- hasitha akka -->
-<form class="row g-3">
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-3 sidenav bg-light">
+            <app-search-botton></app-search-botton>
+            <div>
+                <app-user-management (editUser)="onEditUser($event)"></app-user-management>   <!---form ekei list ekei connection ekt-->
+            </div>
+        </div>
 
-    <div class="col-md-6">
-        <label for="userName" class="form-label">User Name</label>
-        <input type="text" class="form-control" id="userName" placeholder="Enter user name">
+        <div class="col-sm-9">
+            <h1>User Management</h1>
+            <hr>
+            
+            <form class="row g-3" (ngSubmit)="onSaveUser()">
+                <div class="col-md-6">
+                    <label for="userName" class="form-label">User Name</label>
+                    <input type="text" name="userName" [(ngModel)]="userObj.userName" class="form-control" id="userName" placeholder="Enter user name" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="userRole" class="form-label">User Role</label>
+                    <input type="text" name="userRole" [(ngModel)]="userObj.userRole" class="form-control" id="userRole" placeholder="Enter user role" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="userBirthday" class="form-label">User Birthday</label>
+                    <input type="date" name="userDOB" [(ngModel)]="userObj.userDOB" class="form-control" id="userBirthday" [ngModel]="userObj.userDOB | date:'yyyy-MM-dd'" required>
+
+                </div>
+
+                <div class="col-md-6">
+                    <label for="userNIC" class="form-label">User NIC Number</label>
+                    <input type="text" name="userNic" [(ngModel)]="userObj.userNic" class="form-control" id="userNIC" placeholder="Enter NIC number" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="userEmail" class="form-label">User Email</label>
+                    <input type="email" name="userEmail" [(ngModel)]="userObj.userEmail" class="form-control" id="userEmail" placeholder="Enter email address" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="userAge" class="form-label">User Age</label>
+                    <input type="number" name="userAge" [(ngModel)]="userObj.userAge" class="form-control" id="userAge" placeholder="Enter age" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="userContact" class="form-label">Contact Number</label>
+                    <input type="tel" name="userContact" [(ngModel)]="userObj.userContact" class="form-control" id="userContact" placeholder="Enter contact number" required>
+                </div>
+
+                <div class="col-md-12 d-flex justify-content-center mt-3">
+
+                    <button  class="btn btn-primary btn-lg w-50" >
+                        {{userObj.userID !=0 ? 'Update User ':'Save User'}}   <!--upadate save wlt btn maru wenna-->
+                        </button>
+                </div>
+            </form>
+        </div>
     </div>
+</div>
 
-    <div class="col-md-6">
-        <label for="userRole" class="form-label">User Role</label>
-        <input type="text" class="form-control" id="userRole" placeholder="Enter user role">
-    </div>
 
-    <div class="col-md-6">
-        <label for="userBirthday" class="form-label">User Birthday</label>
-        <input type="date" class="form-control" id="userBirthday">
-    </div>
-
-    <div class="col-md-6">
-        <label for="userNIC" class="form-label">User NIC Number</label>
-        <input type="text" class="form-control" id="userNIC" placeholder="Enter NIC number">
-    </div>
-
-    <div class="col-md-6">
-        <label for="userEmail" class="form-label">User Email</label>
-        <input type="email" class="form-control" id="userEmail" placeholder="Enter email address">
-    </div>
-
-    <div class="col-md-6">
-        <label for="userAge" class="form-label">User Age</label>
-        <input type="text" class="form-control" id="userAge" placeholder="Enter age">
-    </div>
-
-    <div class="col-md-6">
-        <label for="userContact" class="form-label">Contact Number</label>
-        <input type="tel" class="form-control" id="userContact" placeholder="Enter contact number">
-    </div>
-
-    <div class="col-md-12 d-flex justify-content-center mt-7">
-        <button type="submit" class="btn btn-primary btn-lg w-50">Submit</button>
-    </div>
-
-</form>

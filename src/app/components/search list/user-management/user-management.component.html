@@ -1,0 +1,35 @@
+<div class="col">
+
+  <!-- @if (isLoader==true) {
+    <div class="col-12 text-center">
+      <br>
+      <br>
+      <div class="spinner-border spinner-border-sm"></div>
+      <div class="spinner-grow spinner-grow-sm"></div>
+    </div>
+  }@else { -->
+
+
+  @for (item of userList; track $index) {
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+          <h4 class="card-title">{{item.userID}}</h4>
+          <h4 class="card-title">{{item.userName}}</h4> <!-- api wlin ena eka -->
+
+
+      
+        <button type="button" class="card-link" (click)="onEdit(item)">Edit User</button>  <!--click kalama function eka call wenna.ts wala-->
+        <button type="button" class="card-link" (click)="onDelete(item.userID)">Delete User</button>
+
+      </div>
+    </div>
+  </div>
+  }
+
+<!-- } -->
+
+ 
+
+
+</div>

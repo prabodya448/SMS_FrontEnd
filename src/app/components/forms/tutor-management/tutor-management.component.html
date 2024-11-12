@@ -1,43 +1,64 @@
-<h1>Tutor management</h1>
-<hr>
-<form class="row g-3 needs-validation" novalidate>
-    <div class="col-md-3">
-      <label class="form-label text-start d-block">Tutor Name</label>
-      <input type="text" class="form-control" id="tutorMgtName" placeholder="Enter Tutor Name" autocomplete="name" required>
-    </div>
-  
-    <div class="col-md-3">
-      <label class="form-label text-start d-block">Date of Birth</label>
-      <input type="date" class="form-control" id="tutorMgtDOB" required>
+<div class="container-fluid text-center ">
+  <div class="row content ">
+    <div class="col-sm-3 sidenav bg-light ">
+      <app-search-botton></app-search-botton>
+      <div>
+        <p>search list will be there</p>
+      </div>
+
     </div>
 
-    <div class="col-md-3">
-        <label class="form-label text-start d-block">NIC</label>
-        <input type="text" class="form-control" id="tutorMgtNIC" placeholder="Enter NIC Number" required>
-    </div>
+    <div class="col-sm-9">
 
-    <div class="col-md-3">
-        <label class="form-label text-start d-block">E-mail</label>
-        <input type="email" class="form-control" id="tutorMgtEmail" placeholder="Enter Email Address" autocomplete="email" required>
-    </div>
 
-    <div class="col-md-3">
-        <label class="form-label text-start d-block">Phone Number 1</label>
-        <input type="number" class="form-control" id="tutorMgtPhone1" placeholder="Enter Phone Number" autocomplete="mobile" maxlength="10" pattern="\d{10}" required>
-    </div>
-  
-    <div class="col-md-3">
-        <label class="form-label text-start d-block">Phone Number 2 (Optional)</label>
-        <input type="number" class="form-control" id="tutorMgtPhone2" placeholder="Enter Phone Number" autocomplete="mobile" maxlength="10" pattern="\d{10}">
-    </div>
+      <h1>Tutor management</h1>
+      <hr>
+      <form class="row g-3 needs-validation" novalidate>
+        <div class="col-md-3">
+          <label class="form-label text-start d-block">Tutor Name</label>
+          <input type="text" class="form-control" id="tutorMgtName" placeholder="Enter Tutor Name" autocomplete="name"
+            required>
+        </div>
 
-    <div class="col-md-6">
-        <label class="form-label text-start d-block">Address</label>
-        <textarea type="text" class="form-control" id="tutorMgtAddress" placeholder="Enter Address" autocomplete="address-line1"> </textarea>
+        <div class="col-md-3">
+          <label class="form-label text-start d-block">Date of Birth</label>
+          <input type="date" class="form-control" id="tutorMgtDOB" required>
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label text-start d-block">NIC</label>
+          <input type="text" class="form-control" id="tutorMgtNIC" placeholder="Enter NIC Number" required>
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label text-start d-block">E-mail</label>
+          <input type="email" class="form-control" id="tutorMgtEmail" placeholder="Enter Email Address"
+            autocomplete="email" required>
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label text-start d-block">Phone Number 1</label>
+          <input type="number" class="form-control" id="tutorMgtPhone1" placeholder="Enter Phone Number"
+            autocomplete="mobile" maxlength="10" pattern="\d{10}" required>
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label text-start d-block">Phone Number 2 (Optional)</label>
+          <input type="number" class="form-control" id="tutorMgtPhone2" placeholder="Enter Phone Number"
+            autocomplete="mobile" maxlength="10" pattern="\d{10}">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label text-start d-block">Address</label>
+          <textarea type="text" class="form-control" id="tutorMgtAddress" placeholder="Enter Address"
+            autocomplete="address-line1"> </textarea>
+        </div>
+
+      </form>
+
+      <div class="position-fixed bottom-0 end-0 p-5">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
     </div>
-    
-</form>
-  
-  <div class="position-fixed bottom-0 end-0 p-5">
-    <button class="btn btn-primary" type="submit">Submit</button>
   </div>
+</div>
