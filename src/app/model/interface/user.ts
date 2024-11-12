@@ -1,6 +1,6 @@
 export interface IUser{   //I dala hadanna
     userID : number,
-    userName : string,
+    userNam : string,
     userRole : string,
     userDOB : string,
     userNic : string,
