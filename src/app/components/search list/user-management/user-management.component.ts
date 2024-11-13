@@ -5,11 +5,12 @@ import { APIResponseModel, IUser } from '../../../model/interface/user';
 import { CommonModule } from '@angular/common';
 import { User } from '../../../model/class/User';
 import { UserService } from '../../../services/user.service';
+import { SearchPipe } from "../../../search.pipe";
 
 @Component({
   selector: 'app-user-management',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule, SearchPipe],
   templateUrl: './user-management.component.html',
   styleUrl: './user-management.component.css'
 })
@@ -21,6 +22,8 @@ export class UserManagementComponent implements OnInit {
   isLoader: boolean = true;  //lode wenw blnn
 
   userService = inject(UserService)
+
+  searchText="";
 
   ngOnInit(): void {
     this.loadUser();

@@ -1,35 +1,18 @@
+<div class="input-group">
+  <input type="search" class="form-control rounded col-sm-9" placeholder="Search" [(ngModel)]="searchText" aria-label="Search" aria-describedby="search-addon" />
+  <button type="button" class="btn btn-outline-primary rounded" data-mdb-ripple-init>search</button>
+</div>
+
 <div class="col">
-
-  <!-- @if (isLoader==true) {
-    <div class="col-12 text-center">
-      <br>
-      <br>
-      <div class="spinner-border spinner-border-sm"></div>
-      <div class="spinner-grow spinner-grow-sm"></div>
-    </div>
-  }@else { -->
-
-
-  @for (item of userList; track $index) {
-  <div class="row">
+  <div *ngFor="let item of userList  | search:searchText; let i = index" class="row">
     <div class="card">
       <div class="card-body">
-          <h4 class="card-title">{{item.userID}}</h4>
-          <h4 class="card-title">{{item.userName}}</h4> <!-- api wlin ena eka -->
-
-
-      
-        <button type="button" class="card-link" (click)="onEdit(item)">Edit User</button>  <!--click kalama function eka call wenna.ts wala-->
+        <h4 class="card-title">{{ item.userID }}</h4>
+        <h4 class="card-title">{{ item.userName }}</h4>
+        
+        <button type="button" class="card-link" (click)="onEdit(item)">Edit User</button>
         <button type="button" class="card-link" (click)="onDelete(item.userID)">Delete User</button>
-
       </div>
     </div>
   </div>
-  }
-
-<!-- } -->
-
- 
-
-
 </div>
