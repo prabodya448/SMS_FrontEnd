@@ -37,7 +37,7 @@ export class FstudentManagementComponent {
       // If user ID exists, update the user
       this.studentService.updateStudents(this.studentObj).subscribe((res: APIResponseModel) => {
         if (res.message) {
-          alert("User updated successfully");
+          alert("Student updated successfully");
           this.loadStudent();  // Reload user list after update
           this.clearForm();  // Clear form after update
         } else {

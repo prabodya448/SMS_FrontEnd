@@ -7,7 +7,7 @@
   <div *ngFor="let item of studentList | search:searchText; ; let i = index" class="row">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">{{ item.stId }}</h4>
+        <h6 class="card-title">{{ item.stId }}</h6>
         <h4 class="card-title">{{ item.stname }}</h4> <!-- Data binding for displaying item properties -->
         
         <button type="button" class="card-link" (click)="onEdit(item)">Edit User</button> 

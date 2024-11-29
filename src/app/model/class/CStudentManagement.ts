@@ -8,6 +8,7 @@ export class CStudentManagement{
     stNic : string;
     stEmail : string;
     stAge : string;
+    
 
  
 

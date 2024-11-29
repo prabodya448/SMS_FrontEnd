@@ -33,17 +33,17 @@ export class StudentManagementComponent implements OnInit{
   })
  }
 
-onSaveStudent(){
-  debugger;
-  this.studentService.saveStudents(this.studentObj).subscribe((res:APIResponseModel)=>{
-    if(res.message){
-      alert("User added. refresh your page to load new data");
-      this.loadStudent();
-    }else{
-      alert("res.message")
-    }
-  })
-}
+// onSaveStudent(){
+//   debugger;
+//   this.studentService.saveStudents(this.studentObj).subscribe((res:APIResponseModel)=>{
+//     if(res.message){
+//       alert("User added. refresh your page to load new data");
+//       this.loadStudent();
+//     }else{
+//       alert("res.message")
+//     }
+//   })
+// }
 
 onDelete(id:number){
  const isDelete = confirm("Are you sure want to delete");
