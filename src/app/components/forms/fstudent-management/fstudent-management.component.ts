@@ -48,7 +48,7 @@ export class FstudentManagementComponent {
       // If user ID is 0, create a new user
       this.studentService.saveStudents(this.studentObj).subscribe((res: APIResponseModel) => {
         if (res.message) {
-          alert("User added successfully");
+          alert("Student  added successfully. refresh the page for updates");
           this.loadStudent();  // Reload user list after adding
           this.clearForm();  // Clear form after add
         } else {
