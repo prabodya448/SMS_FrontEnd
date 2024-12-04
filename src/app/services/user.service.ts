@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { APIResponseModel } from '../model/interface/user';
 import { User } from '../model/class/User';
 import { environment } from '../../environments/environment.development';
@@ -44,6 +44,26 @@ export class UserService {
   updateStudents(obj:CStudentManagement):Observable<APIResponseModel>{   //api modle eka api walin ena outeka interface wlt aran
     return this.http.put<APIResponseModel>(environment.API_URL+"smsBK/studentUpdate/",obj)
   }
+
+  getStudentById(stId: string): Observable<CStudentManagement> {
+    return this.http.get<{ message: string; student: CStudentManagement }>(`http://localhost:8000/smsBK/getStudentById/${stId}`).pipe(
+      map((response) => response.student), // Extract the student object
+      catchError((error) => {
+        console.error('Error fetching student:', error);
+        return throwError(() => new Error('Failed to fetch student details.'));
+      })
+    );
+  }
+  
+  // getStudentById (id:number):Observable<APIResponseModel>{   //api modle eka api walin ena outeka interface wlt aran
+  //   return this.http.delete<APIResponseModel>(environment.API_URL+"smsBK/studentDelete/"+id)
+  // }
+
+  submitAttendance(attendanceData: any): Observable<APIResponseModel> {
+    return this.http.post<APIResponseModel>(`${environment.API_URL}smsBK/submitAttendance`, attendanceData);
+  }
+  
+  
 }
 
  
