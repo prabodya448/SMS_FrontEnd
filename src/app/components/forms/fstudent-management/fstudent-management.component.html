@@ -57,6 +57,20 @@
           </div>
         </div>
       </form>
+      <hr>
+
+      <div *ngIf="qrData">
+        <h3>QR Code for Student</h3>
+        <div #qrCodeElement>  <!-- Reference the QR code element -->
+          <qrcode [qrdata]="qrData" ></qrcode>
+        </div>
+        
+        <!-- Download button -->
+        <button (click)="downloadQRCode()" class="btn btn-primary mb-2">Download QR Code</button>
+      </div>
+      
+      
+      
     </div>
   </div>
 </div>

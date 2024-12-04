@@ -1,23 +1,27 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewChild, ElementRef } from '@angular/core';
 import { StudentManagementComponent } from "../../search list/student-management/student-management.component";
 import { CStudentManagement } from '../../../model/class/CStudentManagement';
 import { UserService } from '../../../services/user.service';
 import { APIResponseModel } from '../../../model/interface/user';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { QRCodeModule } from 'angularx-qrcode';
+import html2canvas from 'html2canvas';  // Import html2canvas
 
 @Component({
   selector: 'app-fstudent-management',
   standalone: true,
-  imports: [ StudentManagementComponent,FormsModule,CommonModule],
+  imports: [StudentManagementComponent, FormsModule, CommonModule, QRCodeModule],
   templateUrl: './fstudent-management.component.html',
-  styleUrl: './fstudent-management.component.css'
+  styleUrls: ['./fstudent-management.component.css']
 })
 export class FstudentManagementComponent {
+  studentObj: CStudentManagement = new CStudentManagement();
+  studentList: CStudentManagement[] = [];
+  qrData: string = '';
 
-  studentObj: CStudentManagement = new CStudentManagement();   // post walatai put walatai
-  studentList: CStudentManagement[] = [];   // usersl list krnn
+  // Marking qrCodeElementRef as optional
+  @ViewChild('qrCodeElement', { static: false }) qrCodeElementRef?: ElementRef;
 
   studentService = inject(UserService);
 
@@ -25,50 +29,56 @@ export class FstudentManagementComponent {
     this.loadStudent();
   }
 
-  // Load all users
   loadStudent() {
     this.studentService.getStudent().subscribe((res: APIResponseModel) => {
       this.studentList = res.content;
     });
   }
 
-  // Save new user or update existing user
   onSaveStudent() {
     if (this.studentObj.stId !== 0) {
-      // If user ID exists, update the user
       this.studentService.updateStudents(this.studentObj).subscribe((res: APIResponseModel) => {
         if (res.message) {
           alert("Student updated successfully");
-          this.loadStudent();  // Reload user list after update
-          this.clearForm();  // Clear form after update
+          this.loadStudent();
+          this.clearForm();
         } else {
-          alert("Failed to update user");
+          alert("Failed to update student");
         }
       });
     } else {
-      // If user ID is 0, create a new user
       this.studentService.saveStudents(this.studentObj).subscribe((res: APIResponseModel) => {
         if (res.message) {
-          alert("Student  added successfully. refresh the page for updates");
-          this.loadStudent();  // Reload user list after adding
-          this.clearForm();  // Clear form after add
+          alert("Student added successfully. Refresh the page for updates.");
+          this.loadStudent();
+          this.clearForm();
         } else {
-          alert("Failed to add user");
+          alert("Failed to add student");
         }
       });
     }
   }
 
-  // Reset the form to add a new user
   clearForm() {
-    this.studentObj = new CStudentManagement(); // Reset form
+    this.studentObj = new CStudentManagement();
+    this.qrData = '';  // Reset qrData
   }
 
-  // Set user data when editing
-  
   onEditStudent(data: CStudentManagement) {
-    this.studentObj = data; // Populate the form with the selected student's data
-    console.log("Received user data:", this.studentObj); // Debugging log
+    this.studentObj = data;
+    console.log("Received student data:", this.studentObj);
+    this.qrData = `${data.stId}`;  // Set qrData to only the student ID (stId)
   }
-  
+
+  // Method to download the QR code as an image
+  downloadQRCode() {
+    if (this.qrCodeElementRef) {
+      html2canvas(this.qrCodeElementRef.nativeElement).then((canvas) => {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL();
+        link.download = `student_${this.studentObj.stId}_qrcode.png`;  // Name the file with the student ID
+        link.click();  // Trigger the download
+      });
+    }
+  }
 }
