@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { SearchBottonComponent } from "../../search-botton/search-botton.component";
 import { UserManagementComponent } from "../../search list/user-management/user-management.component";
 import { User } from '../../../model/class/User';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +9,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-fuser-management',
   standalone: true,
-  imports: [SearchBottonComponent, UserManagementComponent, FormsModule,CommonModule],
+  imports: [UserManagementComponent, FormsModule,CommonModule],
   templateUrl: './fuser-management.component.html',
   styleUrl: './fuser-management.component.css'
 })

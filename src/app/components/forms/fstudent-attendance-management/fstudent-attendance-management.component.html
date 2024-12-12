@@ -1,58 +1,59 @@
-<div class="container-fluid text-center ">
-  <div class="row content ">
-    <div class="col-sm-3 sidenav bg-light ">
-      <app-search-botton></app-search-botton>
-      <div>
-        <p>search list will be there</p>
-      </div>
-
-    </div>
-
-    <div class="col-sm-9">
-
-
-      <h1>Studence Attendance Management</h1>
-      <hr>
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="sidenav bg-light">
+      <h1>Student Attendance Management</h1>
+      <hr />
       <form>
         <div class="row mb-3">
-
-          <div class="col-md-6">
-            <label for="attendanceID" class="form-label">Attendance ID</label>
-            <input type="text" class="form-control" id="attendanceID" placeholder="Enter Attendance ID">
+          <div class="col-md-4">
+            <label for="className" class="form-label">Class Name</label>
+            <input type="text" [(ngModel)]="className" class="form-control" id="className"
+              placeholder="Enter Class Name" />
           </div>
 
-          <div class="col-md-6">
-            <label for="classID" class="form-label">Class ID</label>
-            <input type="text" class="form-control" id="classID" placeholder="Enter Class ID">
-          </div>
-        </div>
-
-        <div class="row mb-3">
-
-          <div class="col-md-6">
-            <label for="studentID" class="form-label">Student ID</label>
-            <input type="text" class="form-control" id="studentID" placeholder="Enter Student ID">
-          </div>
-
-          <div class="col-md-6">
-            <label for="attendanceDate" class="form-label">Attendance Date Time</label>
-            <input type="datetime-local" class="form-control" id="attendanceDate">
+          <div class="col-md-4">
+            <label for="attendanceDate" class="form-label">Attendance Date</label>
+            <input type="date" [(ngModel)]="attendanceDate" class="form-control" id="attendanceDate" />
           </div>
         </div>
+        <hr />
 
-        <div class="row mb-3">
-
+        <div class="row mb-4">
           <div class="col-md-6">
-            <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" rows="3" placeholder=""></textarea>
+            <label for="stId" class="form-label">Student ID</label>
+            <input type="text" [(ngModel)]="stId" class="form-control" id="stId" name="studentId"
+              [ngModelOptions]="{standalone: true}" placeholder="Enter Student ID"
+              (keyup.enter)="addStudentManually()" />
+          </div>
+          <div class="col-md-4">
+            <br />
+            <button type="button" class="btn btn-primary" (click)="addStudentManually()">
+              Add Manually
+            </button>
           </div>
         </div>
-
-        <div class="text-center">
-          <button type="submit" class="btn btn-primary">Save</button>
-        </div>
-
       </form>
+
+      <table class="table table-bordered border-secondary table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Student ID</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of AttendanceList">
+            <td>{{ student.stId }}</td>
+            <td>{{ student.stname }}</td>
+            <td>{{ student.stEmail }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button type="button" class="btn btn-success mt-3" (click)="submitAttendance()">
+        Submit Today's Attendance
+      </button>
     </div>
   </div>
 </div>
