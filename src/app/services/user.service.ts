@@ -5,6 +5,10 @@ import { APIResponseModel } from '../model/interface/user';
 import { User } from '../model/class/User';
 import { environment } from '../../environments/environment.development';
 import { CStudentManagement } from '../model/class/CStudentManagement';
+import { CTutor } from '../model/class/CTutor';
+import { CClassManagement } from '../model/class/CClassManagement';
+import { CEventManagement } from '../model/class/CEventManagement';
+
 
 @Injectable({
   providedIn: 'root'
@@ -64,6 +68,76 @@ export class UserService {
   }
   
   
+
+
+  //tutor
+getTutor(): Observable<APIResponseModel> {
+  return this.http.get<APIResponseModel>(environment.API_URL + 'smsBK/getAllTutors');
 }
 
- 
+saveTutors(obj: CTutor): Observable<APIResponseModel> {
+  return this.http.post<APIResponseModel>(environment.API_URL + 'smsBK/tutorSave', obj);
+}
+
+deleteTutorsById(id: number): Observable<APIResponseModel> {
+  return this.http.delete<APIResponseModel>(environment.API_URL + 'smsBK/tutorDelete/' + id);
+}
+
+updateTutors(obj : CTutor): Observable<APIResponseModel> {
+  return this.http.put<APIResponseModel>(environment.API_URL + 'smsBK/tutorUpdate/' , obj);
+}
+
+// getTutorById(stId: string): Observable<CTutor> {
+//   return this.http.get<{ message: string; tutor: CTutor}>(`http://localhost:8000/smsBK/getStudentById/${tId}`).pipe(
+//     map((response) => response.tutor), // Extract the student object
+//     catchError((error) => {
+//       console.error('Error fetching student:', error);
+//       return throwError(() => new Error('Failed to fetch student details.'));
+//     })
+//   );
+// }
+
+
+
+
+//class
+getClasses(): Observable<APIResponseModel> {
+  return this.http.get<APIResponseModel>(environment.API_URL + 'smsBK/getAllClassMgs');
+}
+
+saveClass(classData: CClassManagement): Observable<APIResponseModel> {
+  return this.http.post<APIResponseModel>(environment.API_URL + 'smsBK/classMgSave', classData);
+}
+
+deleteClassById(id: string): Observable<APIResponseModel> {
+  return this.http.delete<APIResponseModel>(environment.API_URL + 'smsBK/classDelete/' + id);
+}
+
+updateClass(id: string, classData: CClassManagement): Observable<APIResponseModel> {
+  return this.http.put<APIResponseModel>(environment.API_URL + 'smsBK/classMgUpdate/' + id, classData);
+}
+
+
+//event
+ // Get all events
+ getEvents(): Observable<APIResponseModel> {
+  return this.http.get<APIResponseModel>(environment.API_URL + 'smsBK/getAllEvents');
+}
+
+// Save a new event
+saveEvent(eventData: CEventManagement): Observable<APIResponseModel> {
+  return this.http.post<APIResponseModel>(environment.API_URL + 'smsBK/eventMgSave', eventData);
+}
+
+// Update an event
+updateEvent(id: string, eventData: CEventManagement): Observable<APIResponseModel> {
+  return this.http.put<APIResponseModel>(environment.API_URL + 'smsBK/eventMgUpdate/' + id, eventData);
+}
+
+// Delete an event by ID
+deleteEventById(id: string): Observable<APIResponseModel> {
+  return this.http.delete<APIResponseModel>(environment.API_URL + 'smsBK/eventDelete/' + id);
+}
+
+}
+
