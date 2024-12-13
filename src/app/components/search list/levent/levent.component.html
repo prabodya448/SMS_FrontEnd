@@ -1,0 +1,19 @@
+<div class="input-group">
+    <input type="search" class="form-control rounded col-sm-9" placeholder="Search" [(ngModel)]="searchText" aria-label="Search" aria-describedby="search-addon" />
+    <button type="button" class="btn btn-outline-primary rounded" data-mdb-ripple-init>search</button>
+  </div>
+  
+  <div class="col">
+    <div *ngFor="let item of eventList | search:searchText; ; let i = index" class="row">
+      <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">{{ item.eId }}</h6>
+            <h4 class="card-title">{{ item.title }}</h4> <!-- Data binding for displaying item properties -->
+          <p > {{item.description}}</p>
+          <button type="button" class="card-link" (click)="onEdit(item)">Edit User</button> 
+          <button type="button" class="card-link" (click)="onDelete(item.eId)">Delete User</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

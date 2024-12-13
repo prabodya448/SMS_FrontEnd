@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { CTutor } from '../../../model/class/CTutor';
 import { UserService } from '../../../services/user.service';
 import { APIResponseModel } from '../../../model/interface/user';
+import { LtutorComponent } from "../../search list/ltutor/ltutor.component";
 
 @Component({
   selector: 'app-tutor-management',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, LtutorComponent],
   templateUrl: './tutor-management.component.html',
   styleUrls: ['./tutor-management.component.css']
 })
