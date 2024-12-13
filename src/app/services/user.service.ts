@@ -109,7 +109,7 @@ saveClass(classData: CClassManagement): Observable<APIResponseModel> {
   return this.http.post<APIResponseModel>(environment.API_URL + 'smsBK/classMgSave', classData);
 }
 
-deleteClassById(id: string): Observable<APIResponseModel> {
+deleteClassById(id: number): Observable<APIResponseModel> {
   return this.http.delete<APIResponseModel>(environment.API_URL + 'smsBK/classDelete/' + id);
 }
 
@@ -135,7 +135,7 @@ updateEvent(id: string, eventData: CEventManagement): Observable<APIResponseMode
 }
 
 // Delete an event by ID
-deleteEventById(id: string): Observable<APIResponseModel> {
+deleteEventById(id: number): Observable<APIResponseModel> {
   return this.http.delete<APIResponseModel>(environment.API_URL + 'smsBK/eventDelete/' + id);
 }
 
