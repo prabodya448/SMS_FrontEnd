@@ -6,7 +6,7 @@ export class CTutor {
   tAddress: string;
   tNic: string;
   email: string;
-  tSubject: number;
+  tSubject: string;
 
   constructor() {
     this.tId = 0;
@@ -16,6 +16,6 @@ export class CTutor {
     this.tAddress = '';
     this.tNic = '';
     this.email = '';
-    this.tSubject = 0;
+    this.tSubject = '';
   }
 }
