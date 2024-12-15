@@ -129,9 +129,10 @@ saveEvent(eventData: CEventManagement): Observable<APIResponseModel> {
   return this.http.post<APIResponseModel>(environment.API_URL + 'smsBK/eventMgSave', eventData);
 }
 
+
 // Update an event
-updateEvent(id: string, eventData: CEventManagement): Observable<APIResponseModel> {
-  return this.http.put<APIResponseModel>(environment.API_URL + 'smsBK/eventMgUpdate/' + id, eventData);
+updateEvent(obj : CEventManagement): Observable<APIResponseModel> {
+  return this.http.put<APIResponseModel>(environment.API_URL + 'smsBK/eventUpdate/' , obj);
 }
 
 // Delete an event by ID

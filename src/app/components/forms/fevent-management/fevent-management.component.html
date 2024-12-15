@@ -3,48 +3,54 @@
         <div class="col-sm-3 sidenav bg-light ">
            
             <div>
-                <app-levent></app-levent>
+                <app-levent (editevent)="onEditEvent($event)" ></app-levent>
             </div>
-
         </div>
 
         <div class="col-sm-9">
 
             <h1>Event Management</h1>
-            <hr>
+            <hr><br><br>
 
-            <form class="row g-3 needs-validation" novalidate>
+            <form (ngSubmit)="onSaveEvent()">
                 <div class="col-md-6">
                     <label class="form-label text-start d-block">Title</label>
-                    <input type="text" class="form-control" id="eventTitle" placeholder="Enter title" required>
+                    <input type="text" name="title" class="form-control" id="eventTitle" placeholder="Enter title" [(ngModel)]="eventObj.title" required>
                 </div>
 
                 <div class="col-md-3">
                     <label class="form-label text-start d-block">Start Date Time</label>
-                    <input type="datetime-local" class="form-control" id="eventStartDateTime" required>
+                    <input type="datetime-local" name="startDateTime" class="form-control" id="eventStartDateTime" [(ngModel)]="eventObj.startDateTime" required>
                 </div>
 
                 <div class="col-md-3">
                     <label class="form-label text-start d-block">End Date Time</label>
-                    <input type="datetime-local" class="form-control" id="eventEndDateTime">
+                    <input type="datetime-local" name="endDateTime" class="form-control" id="eventEndDateTime" [(ngModel)]="eventObj.endDateTime" required>
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label text-start d-block">Description</label>
-                    <textarea type="text" class="form-control" id="EventDescription"> </textarea>
+                    <textarea type="text" name="description" class="form-control" id="EventDescription" [(ngModel)]="eventObj.description" required> </textarea>
                 </div>
 
-                <div class="col-md-3">
+                <!-- <div class="col-md-3">
                     <label class="form-label text-start d-block">Image</label>
                     <input class="form-control" type="file" id="eventImage" accept="image/*">
-                </div>
+                </div> -->
+                <br><br>
+
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col">
+                      <button type="submit" class="btn btn-primary mb-2">
+                        {{ eventObj.eId !== 0 ? 'Update Event' : 'Save Event' }}
+                      </button>
+                    </div>
+                  </div>
             </form>
 
-            <div class="position-fixed bottom-0 end-0 p-5">
-                <button class="btn btn-danger" type="submit" style="width: 100px;">Cancel</button>
-                &nbsp;&nbsp;
-                <button class="btn btn-primary" type="submit" style="width: 100px;">Save</button>
-            </div>
+
         </div>
     </div>
 </div>
