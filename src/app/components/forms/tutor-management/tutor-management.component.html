@@ -1,64 +1,70 @@
 <div class="container-fluid text-center ">
   <div class="row content ">
     <div class="col-sm-3 sidenav bg-light ">
- 
-      <div>
-         <app-ltutor></app-ltutor>
-      </div>
 
+      <div>
+        <app-ltutor (edittutor)="onEditTutor($event)"></app-ltutor>
+      </div>
     </div>
 
     <div class="col-sm-9">
-
-
       <h1>Tutor management</h1>
       <hr>
-      <form class="row g-3 needs-validation" novalidate>
+      <br>
+      <br>
+
+      <form (ngSubmit)="onSaveTutor()">
         <div class="col-md-3">
           <label class="form-label text-start d-block">Tutor Name</label>
-          <input type="text" class="form-control" id="tutorMgtName" placeholder="Enter Tutor Name" autocomplete="name"
-            required>
+          <input type="text" name="tName" class="form-control" placeholder="Enter Tutor Name"[(ngModel)]="tutorObj.tName" required>
         </div>
 
         <div class="col-md-3">
           <label class="form-label text-start d-block">Date of Birth</label>
-          <input type="date" class="form-control" id="tutorMgtDOB" required>
+          <input type="date" name="tDob" class="form-control" [(ngModel)]="tutorObj.tDob" required>
         </div>
 
         <div class="col-md-3">
           <label class="form-label text-start d-block">NIC</label>
-          <input type="text" class="form-control" id="tutorMgtNIC" placeholder="Enter NIC Number" required>
+          <input type="text" name="tNic" class="form-control" placeholder="Enter NIC Number" [(ngModel)]="tutorObj.tNic" required>
         </div>
 
         <div class="col-md-3">
           <label class="form-label text-start d-block">E-mail</label>
-          <input type="email" class="form-control" id="tutorMgtEmail" placeholder="Enter Email Address"
-            autocomplete="email" required>
+          <input type="text" name="email" class="form-control"  placeholder="Enter Email Address" [(ngModel)]="tutorObj.email" required>
         </div>
 
         <div class="col-md-3">
-          <label class="form-label text-start d-block">Phone Number 1</label>
-          <input type="number" class="form-control" id="tutorMgtPhone1" placeholder="Enter Phone Number"
-            autocomplete="mobile" maxlength="10" pattern="\d{10}" required>
+          <label class="form-label text-start d-block">Phone Number </label>
+          <input type="text" name="tPhoneNumber" class="form-control" placeholder="Enter Phone Number" [(ngModel)]="tutorObj.tPhoneNumber" required>
         </div>
 
         <div class="col-md-3">
-          <label class="form-label text-start d-block">Phone Number 2 (Optional)</label>
-          <input type="number" class="form-control" id="tutorMgtPhone2" placeholder="Enter Phone Number"
-            autocomplete="mobile" maxlength="10" pattern="\d{10}">
+          <label class="form-label text-start d-block">Subject</label>
+          <input type="text" name="tSubject" class="form-control"  placeholder="Enter subject"[(ngModel)]="tutorObj.tSubject" required>
         </div>
+
 
         <div class="col-md-6">
           <label class="form-label text-start d-block">Address</label>
-          <textarea type="text" class="form-control" id="tutorMgtAddress" placeholder="Enter Address"
-            autocomplete="address-line1"> </textarea>
+          <input type="text" name="tAddress" class="form-control" placeholder="Enter Address"[(ngModel)]="tutorObj.tAddress" required>
+        </div>
+        
+        <br><br>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col">
+            <button type="submit" class="btn btn-primary mb-2">
+              {{ tutorObj.tId !== 0 ? 'Update Tutor' : 'Save Tutor' }}
+            </button>
+          </div>
         </div>
 
       </form>
 
-      <div class="position-fixed bottom-0 end-0 p-5">
-        <button class="btn btn-primary" type="submit">Submit</button>
-      </div>
+
+
     </div>
   </div>
 </div>

@@ -3,7 +3,7 @@
         <div class="col-sm-3 sidenav bg-light ">
          
             <div>
-                <app-lclass></app-lclass>
+                <app-lclass  (editclass)="onEditClass($event)"></app-lclass>
             </div>
 
         </div>
@@ -11,20 +11,21 @@
         <div class="col-sm-9">
 
             <h1 class="text-center">Class Management</h1>
-            <hr>
+            <hr><br><br>
 
             <div class="container m-4">
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <div class="col-4">
-                                <form>
+
+                                <form (ngSubmit)="onSaveClass()">
                                     <div class="mb-3">
                                         <input type="text" class="form-control" placeholder="Input Class Name"
-                                            aria-describedby="classNameHelp">
+                                            aria-describedby="classNameHelp" name="className" [(ngModel)]="classObj.className" required>
                                     </div>
                                     <div class="mb-3">
-                                        <select class="form-select" aria-label="Select Subject">
+                                        <select class="form-select" aria-label="Select Subject" name="subject" [(ngModel)]="classObj.subject" required>
                                             <option selected>Select Subject</option>
                                             <option value="1">Math</option>
                                             <option value="2">Science</option>
@@ -32,7 +33,7 @@
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <select class="form-select" aria-label="Select Grade">
+                                        <select class="form-select" aria-label="Select Grade" name="grade" [(ngModel)]="classObj.grade" required>
                                             <option selected>Select Grade</option>
                                             <option value="1">Grade 1</option>
                                             <option value="2">Grade 2</option>
@@ -41,22 +42,21 @@
                                     </div>
                                     <div class="mb-3">
                                         <input type="text" class="form-control" placeholder="Input Class Fee"
-                                            aria-describedby="classFeeHelp">
+                                            aria-describedby="classFeeHelp" name="classFee" [(ngModel)]="classObj.classFee" required>
                                     </div>
                                     <div class="mb-3">
-                                        <select class="form-select" aria-label="Select Classroom">
+                                        <select class="form-select" aria-label="Select Classroom" name="classRoom" [(ngModel)]="classObj.classRoom" required>
                                             <option selected>Select Classroom</option>
                                             <option value="1">Classroom A</option>
                                             <option value="2">Classroom B</option>
                                             <option value="3">Classroom C</option>
                                         </select>
                                     </div>
-                                </form>
-                            </div>
+
 
                             <div class="col-4">
                                 <div class="mb-3">
-                                    <select class="form-select" aria-label="Select Class Type">
+                                    <select class="form-select" aria-label="Select Class Type" name="classType" [(ngModel)]="classObj.classType" required>
                                         <option selected>Select Class Type</option>
                                         <option value="1">Lecture</option>
                                         <option value="2">Lab</option>
@@ -64,7 +64,7 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <select class="form-select" aria-label="Select Tutor">
+                                    <select class="form-select" aria-label="Select Tutor" name="tutor" [(ngModel)]="classObj.tutor" required>
                                         <option selected>Select Tutor</option>
                                         <option value="1">Tutor A</option>
                                         <option value="2">Tutor B</option>
@@ -73,10 +73,10 @@
                                 </div>
                                 <div class="mb-3">
                                     <input type="text" class="form-control" placeholder="Input Batch"
-                                        aria-describedby="batchHelp">
+                                        aria-describedby="batchHelp" name="batch" [(ngModel)]="classObj.batch" required>
                                 </div>
                                 <div class="mb-3">
-                                    <select class="form-select" aria-label="Select Day">
+                                    <select class="form-select" aria-label="Select Day" name="day" [(ngModel)]="classObj.day" required>
                                         <option selected>Select Day</option>
                                         <option value="1">Monday</option>
                                         <option value="2">Tuesday</option>
@@ -87,20 +87,30 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <input type="text" class="form-control" placeholder="Start Time"
-                                                aria-describedby="startTimeHelp">
+                                                aria-describedby="startTimeHelp" name="startTime" [(ngModel)]="classObj.startTime" required>
                                         </div>
                                         <div class="col-6">
                                             <input type="text" class="form-control" placeholder="End Time"
-                                                aria-describedby="endTimeHelp">
+                                                aria-describedby="endTimeHelp" name="endTime" [(ngModel)]="classObj.endTime" required>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-primary m-3">Save Details</button>
-            </div>
+                     
+
+ <br><br>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col">
+            <button type="submit" class="btn btn-primary mb-2">
+              {{ classObj.cId !== 0 ? 'Update Class' : 'Save Class' }}
+            </button>
+          </div>
+        </div>
+
+        </form>
+    </div>
         </div>
     </div>
 </div>

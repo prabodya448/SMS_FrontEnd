@@ -87,18 +87,6 @@ updateTutors(obj : CTutor): Observable<APIResponseModel> {
   return this.http.put<APIResponseModel>(environment.API_URL + 'smsBK/tutorUpdate/' , obj);
 }
 
-// getTutorById(stId: string): Observable<CTutor> {
-//   return this.http.get<{ message: string; tutor: CTutor}>(`http://localhost:8000/smsBK/getStudentById/${tId}`).pipe(
-//     map((response) => response.tutor), // Extract the student object
-//     catchError((error) => {
-//       console.error('Error fetching student:', error);
-//       return throwError(() => new Error('Failed to fetch student details.'));
-//     })
-//   );
-// }
-
-
-
 
 //class
 getClasses(): Observable<APIResponseModel> {
@@ -113,8 +101,10 @@ deleteClassById(id: number): Observable<APIResponseModel> {
   return this.http.delete<APIResponseModel>(environment.API_URL + 'smsBK/classDelete/' + id);
 }
 
-updateClass(id: string, classData: CClassManagement): Observable<APIResponseModel> {
-  return this.http.put<APIResponseModel>(environment.API_URL + 'smsBK/classMgUpdate/' + id, classData);
+
+
+updateClass(obj : CClassManagement): Observable<APIResponseModel> {
+  return this.http.put<APIResponseModel>(environment.API_URL + 'smsBK/classMGtUpdate/' , obj);
 }
 
 
@@ -129,9 +119,10 @@ saveEvent(eventData: CEventManagement): Observable<APIResponseModel> {
   return this.http.post<APIResponseModel>(environment.API_URL + 'smsBK/eventMgSave', eventData);
 }
 
+
 // Update an event
-updateEvent(id: string, eventData: CEventManagement): Observable<APIResponseModel> {
-  return this.http.put<APIResponseModel>(environment.API_URL + 'smsBK/eventMgUpdate/' + id, eventData);
+updateEvent(obj : CEventManagement): Observable<APIResponseModel> {
+  return this.http.put<APIResponseModel>(environment.API_URL + 'smsBK/eventUpdate/' , obj);
 }
 
 // Delete an event by ID

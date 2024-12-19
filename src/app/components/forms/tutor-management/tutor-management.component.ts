@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CTutor } from '../../../model/class/CTutor';
@@ -13,19 +13,18 @@ import { LtutorComponent } from "../../search list/ltutor/ltutor.component";
   templateUrl: './tutor-management.component.html',
   styleUrls: ['./tutor-management.component.css']
 })
-export class TutorManagementComponent implements OnInit {
+export class TutorManagementComponent {
   tutorObj: CTutor = new CTutor();
   tutorList: CTutor[] = [];
-  searchText: string = '';
+
   tutorService = inject(UserService);
 
-  @Output() editTutor = new EventEmitter<CTutor>();
-
   ngOnInit(): void {
-    this.loadTutors();
+    this.loadTutor();
   }
 
-  loadTutors() {
+
+  loadTutor() {
     this.tutorService.getTutor().subscribe((res: APIResponseModel) => {
       this.tutorList = res.content;
     });
@@ -36,7 +35,7 @@ export class TutorManagementComponent implements OnInit {
       this.tutorService.updateTutors(this.tutorObj).subscribe((res: APIResponseModel) => {
         if (res.message) {
           alert('Tutor updated successfully');
-          this.loadTutors();
+          this.loadTutor();
           this.clearForm();
         } else {
           alert('Failed to update Tutor');
@@ -45,8 +44,8 @@ export class TutorManagementComponent implements OnInit {
     } else {
       this.tutorService.saveTutors(this.tutorObj).subscribe((res: APIResponseModel) => {
         if (res.message) {
-          alert('Tutor added successfully');
-          this.loadTutors();
+          alert('Tutor added successfully. Refresh the page for updates.');
+          this.loadTutor();
           this.clearForm();
         } else {
           alert('Failed to add Tutor');
@@ -55,25 +54,13 @@ export class TutorManagementComponent implements OnInit {
     }
   }
 
-  onEdit(tutor: CTutor) {
-    this.editTutor.emit(tutor);
-    this.tutorObj = { ...tutor };
-  }
-
-  onDelete(tId: number) {
-    if (confirm('Are you sure you want to delete this tutor?')) {
-      this.tutorService.deleteTutorsById(tId).subscribe((res: APIResponseModel) => {
-        if (res.message) {
-          alert('Tutor deleted successfully');
-          this.loadTutors();
-        } else {
-          alert('Failed to delete Tutor');
-        }
-      });
-    }
-  }
-
   clearForm() {
     this.tutorObj = new CTutor();
   }
+
+  onEditTutor(data: CTutor) {
+    this.tutorObj = data;
+    console.log("Received student data:", this.tutorObj);
+  }
+
 }
