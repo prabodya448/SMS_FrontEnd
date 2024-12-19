@@ -4,32 +4,49 @@
       <h1>Student Attendance Management</h1>
       <hr />
       <form>
-        <div class="row mb-3">
-          <div class="col-md-4">
-            <label for="className" class="form-label">Class Name</label>
-            <input type="text" [(ngModel)]="className" class="form-control" id="className"
-              placeholder="Enter Class Name" />
-          </div>
+        <div>
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <label for="className" class="form-label">Class Name</label>
+              <input type="text" [(ngModel)]="className" class="form-control" id="className" placeholder="Enter Class Name" />
+            </div>
 
-          <div class="col-md-4">
-            <label for="attendanceDate" class="form-label">Attendance Date</label>
-            <input type="date" [(ngModel)]="attendanceDate" class="form-control" id="attendanceDate" />
+            <div class="col-md-4">
+              <label for="attendanceDate" class="form-label">Attendance Date</label>
+              <input type="date" [(ngModel)]="attendanceDate" class="form-control" id="attendanceDate" />
+            </div>
           </div>
         </div>
         <hr />
 
         <div class="row mb-4">
           <div class="col-md-6">
-            <label for="stId" class="form-label">Student ID</label>
-            <input type="text" [(ngModel)]="stId" class="form-control" id="stId" name="studentId"
-              [ngModelOptions]="{standalone: true}" placeholder="Enter Student ID"
-              (keyup.enter)="addStudentManually()" />
+            <div class="d-flex justify-content-center align-items-center card p-3">
+              <h5 class="card-title">Add Manually</h5>
+              <label for="stId" class="form-label">Student ID</label>
+              <input
+                type="text"
+                [(ngModel)]="stId"
+                class="form-control"
+                id="stId"
+                name="studentId"
+                [ngModelOptions]="{standalone: true}"
+                placeholder="Enter Student ID"
+                (keyup.enter)="addStudentManually()"
+              />
+              <button type="button" class="btn btn-primary mt-2" (click)="addStudentManually()">Add Manually</button>
+            </div>
           </div>
-          <div class="col-md-4">
-            <br />
-            <button type="button" class="btn btn-primary" (click)="addStudentManually()">
-              Add Manually
-            </button>
+
+          <!-- Scan Code Section -->
+          <div class="col-md-6">
+            <div class="d-flex justify-content-center align-items-center card p-3">
+              <h5 class="card-title">Scan Code</h5>
+              <div class="border p-4 bg-light" style="height: 300px; width: 300px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                <p class="text-muted">QR Scanner Preview</p>
+              </div>
+              <button type="button" class="btn btn-primary mt-2" (click)="scanQrCode()">Scan QR Code</button>
+            </div>
           </div>
         </div>
       </form>
