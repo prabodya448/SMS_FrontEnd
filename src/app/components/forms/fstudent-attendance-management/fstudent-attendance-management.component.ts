@@ -39,6 +39,11 @@ export class FstudentAttendanceManagementComponent {
 
   }
 
+  onQRCodeScanned(value: string) {
+    this.stId = value;  // Set the scanned value to stId
+    this.addStudentManually();  // Call the method to add the student
+  }
+
   // Toggle scanner on/off
   // toggleScanner() {
   //   this.scannerEnabled = !this.scannerEnabled;

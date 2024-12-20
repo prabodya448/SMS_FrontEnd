@@ -40,12 +40,13 @@
   <div class="d-flex justify-content-center align-items-center card p-3">
     <h5 class="card-title">Scan Code</h5>
     <div class="qr-scanner-container">
-      <ngx-scanner-qrcode #action="scanner"></ngx-scanner-qrcode>
+      <ngx-scanner-qrcode #action="scanner" (event)="onQRCodeScanned($event[0].value)"></ngx-scanner-qrcode>
+      <!-- <ngx-scanner-qrcode #action="scanner" ></ngx-scanner-qrcode> -->
     </div>
-    <span>{{ action.data.value | json }}</span><!-- value -->
-    <span>{{ action.data | async | json }}</span><!-- async -->
+    <span>{{ (action.data | async)?.[0]?.value }}</span>
+    <!-- <span>{{ action.data | async | json }}</span>async -->
     <p *ngIf="action.isLoading">⌛ Loading...</p>
-    <button (click)="action.isStart ? action.stop() : action.start()">{{action.isStart ? 'Stop' : 'Start'}}</button>
+    <button class="btn btn-primary mt-2 fixed-size-btn" (click)="action.isStart ? action.stop() : action.start()">{{action.isStart ? 'Stop Scanning' : 'Start Scanning'}}</button>
     <!-- <button type="button" class="btn btn-primary mt-2 fixed-size-btn" (click)="toggleScanner()">
       {{ scannerEnabled ? 'Stop Scanner' : 'Scan QR Code' }}
     </button> -->
