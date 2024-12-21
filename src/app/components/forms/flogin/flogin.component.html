@@ -1,0 +1,42 @@
+<div class="login-container">
+    <!-- Carousel Section -->
+    <div class="carousel">
+      <div class="carousel-images">
+        <img src="dashbord down 1.jpg" alt="Student Learning" />
+        <img src="ManageStudentsCardImage.jpeg" alt="Classroom Management" />
+        <img src="dashbord down 3.jpg" alt="Teacher Helping Students" />
+        <img src="dashbord down 2.jpg" alt="Teacher Helping Students" />
+        <img src="TrackAttendanceCardImage.jpeg" alt="Teacher Helping Students" />
+        <img src="ClassSchedulesCardImage.jpeg" alt="Teacher Helping Students" />
+      </div>
+      <!-- Login Form -->
+      <div class="login-box">
+        <h2>Welcome Back</h2>
+        <form (ngSubmit)="onSubmit()">
+          <div class="input-group">
+            <label for="username">Username</label>
+            <input id="username" type="text" [(ngModel)]="username" name="username" placeholder="Enter your username" required />
+          </div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" [(ngModel)]="password" name="password" placeholder="Enter your password" required />
+          </div>
+          <button type="submit" class="login-btn">Login</button>
+        </form>
+        <p class="signup-link">
+          Don't have an account? <a href="#">Create Account Now</a>
+        </p>
+        <div *ngIf="errorMessage" class="error-message">
+          <p>{{ errorMessage }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- About Us Section -->
+    <footer class="about-section">
+      <h3>About OpenSoft</h3>
+      <p>
+        Our Student Management System streamlines classroom management, attendance tracking, and student performance monitoring. We aim to empower educators and students with seamless digital tools for enhanced learning experiences.
+      </p>
+      <p>&copy; 2024 Student Management System. All rights reserved.</p>
+    </footer>
+  </div>
