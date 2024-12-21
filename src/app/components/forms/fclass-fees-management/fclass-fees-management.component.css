@@ -1,13 +1,86 @@
-/* Remove arrows from number input fields */
 
-/* Chrome, Safari, Edge, Opera */
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.sidenav {
+  background-color: #f8f9fa;
+  border-radius: 10px;
 }
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+.card {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.form-control, .form-select {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+h1 {
+  color: #007bff;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+hr {
+  border: 1px solid #007bff;
+}
+
+hr.my-4 {
+  border-width: 2px;
+}
+
+.input-group-text {
+  border-radius: 8px 0 0 8px;
+}
+
+.input-group .form-control {
+  border-radius: 0 8px 8px 0;
+}
+
+/* Spacing and layout adjustments */
+.col-md-2, .col-md-3 {
+  padding-bottom: 1rem;
+}
+
+.col-md-2, .col-md-3, .col-12 {
+  padding-right: 15px;
+}
+
+.text-start {
+  text-align: left;
+}
+
+.btn-lg {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+}
+
+.input-group-text {
+  border-radius: 8px 0 0 8px;
+}
+
+.input-group .form-control {
+  border-radius: 0 8px 8px 0;
 }

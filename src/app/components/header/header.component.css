@@ -1,0 +1,66 @@
+/* Navbar enhancements */
+.navbar {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+  }
+  
+  /* Logo with rounded corners and shadow */
+  .logo-img {
+    max-width: 100px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .logo-img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+  }
+  
+  /* Navbar buttons hover effect */
+  .nav-link {
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #fff;
+    background-color: #007bff; /* Blue background on hover */
+    border-radius: 5px;
+  }
+  
+  .dropdown-toggle {
+    transition: background-color 0.3s ease;
+  }
+  
+  .dropdown-toggle:hover {
+    background-color: #9fa1a3;
+    border-radius: 5px;
+  }
+  
+  .dropdown-item {
+    transition: background-color 0.3s ease;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .btn-dark {
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-dark:hover {
+    background-color: #0056b3;
+  }
+  
+  .bg-light {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Adding margin between dropdown buttons */
+  .nav-item {
+    margin-right: 15px; /* Adds space between each dropdown button */
+  }
+  

@@ -1,76 +1,84 @@
-<div class="container-fluid text-center">
+<div class="container-fluid text-center py-5">
   <div class="row content">
-    <div class="col-sm-3 sidenav bg-light">
+    <!-- Sidebar Section -->
+    <div class="col-sm-3 sidenav bg-light p-4 rounded shadow-sm">
       <div>
         <app-student-management (editStudent)="onEditStudent($event)"></app-student-management>
       </div>
     </div>
 
-    <div class="col-sm-9">
-      <h1>Student Management</h1>
-      <hr>
-      <br>
-      <br>
+    <!-- Main Content Section -->
+    <div class="col-sm-9 p-4">
+      <!-- Student Management Title -->
+      <h1 class="mb-4 text-primary">Student Management</h1>
+      <hr class="mb-4">
+      
+      <!-- Form Section -->
+      <div class="card p-4 shadow-lg">
+        <form (ngSubmit)="onSaveStudent()">
+          <div class="row mb-3">
+            <div class="col">
+              <input type="text" name="stname" class="form-control" placeholder="Student Name" [(ngModel)]="studentObj.stname" required>
+            </div>
+            <div class="col">
+              <input type="tel" name="pConNumber" class="form-control" placeholder="Parent's Contact Number" [(ngModel)]="studentObj.pConNumber" required>
+            </div>
+            <div class="col">
+              <input type="tel" name="stConNumber" class="form-control" placeholder="Student's Contact Number" [(ngModel)]="studentObj.stConNumber" required>
+            </div>
+          </div>
 
-      <form (ngSubmit)="onSaveStudent()">
-        <div class="row">
-          <div class="col">
-            <input type="text" name="stname" class="form-control" placeholder="Student Name" [(ngModel)]="studentObj.stname" required>
+          <div class="row mb-3">
+            <div class="col">
+              <input type="date" name="stDOB" class="form-control" placeholder="Student's Birthday" [(ngModel)]="studentObj.stDOB" required>
+            </div>
+            <div class="col">
+              <input type="text" name="stAddress" class="form-control" placeholder="Student's Address" [(ngModel)]="studentObj.stAddress" required>
+            </div>
+            <div class="col">
+              <input type="text" name="stNic" class="form-control" placeholder="Student's NIC Number (Without V)" [(ngModel)]="studentObj.stNic" required>
+            </div>
           </div>
-          <div class="col">
-            <input type="tel" name="pConNumber" class="form-control" placeholder="Parent's Contact Number" [(ngModel)]="studentObj.pConNumber" required>
-          </div>
-          <div class="col">
-            <input type="tel" name="stConNumber" class="form-control" placeholder="Student's Contact Number" [(ngModel)]="studentObj.stConNumber" required>
-          </div>
-        </div>
-        <br><br>
-        <div class="row">
-          <div class="col">
-            <input type="date" name="stDOB" class="form-control" placeholder="Student's Birthday" [(ngModel)]="studentObj.stDOB" required>
-          </div>
-          <div class="col">
-            <input type="text" name="stAddress" class="form-control" placeholder="Student's Address" [(ngModel)]="studentObj.stAddress" required>
-          </div>
-          <div class="col">
-            <input type="text" name="stNic" class="form-control" placeholder="Student's NIC Number (Without V)" [(ngModel)]="studentObj.stNic" required>
-          </div>
-        </div>
-        <br><br>
-        <div class="row">
-          <div class="col">
-            <input type="email" name="stEmail" class="form-control" placeholder="Student's Email" [(ngModel)]="studentObj.stEmail" required>
-          </div>
-          <div class="col">
-            <input max="100" type="number" name="stAge" class="form-control" placeholder="Student's Age" [(ngModel)]="studentObj.stAge" required>
-          </div>
-          <div class="col"></div>
-        </div>
-        <br><br>
-        <div class="row">
-          <div class="col"></div>
-          <div class="col"></div>
-          <div class="col">
-            <button type="submit" class="btn btn-primary mb-2">
-              {{ studentObj.stId !== 0 ? 'Update Student' : 'Save Student' }}
-            </button>
-          </div>
-        </div>
-      </form>
-      <hr>
 
-      <div *ngIf="qrData">
-        <h3>QR Code for Student</h3>
-        <div #qrCodeElement>  <!-- Reference the QR code element -->
-          <qrcode [qrdata]="qrData" ></qrcode>
+          <div class="row mb-3">
+            <div class="col">
+              <input type="email" name="stEmail" class="form-control" placeholder="Student's Email" [(ngModel)]="studentObj.stEmail" required>
+            </div>
+            <div class="col">
+              <input max="100" type="number" name="stAge" class="form-control" placeholder="Student's Age" [(ngModel)]="studentObj.stAge" required>
+            </div>
+            <div class="col"></div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">
+              <button type="submit" class="btn btn-primary mb-2 w-100">
+                {{ studentObj.stId !== 0 ? 'Update Student' : 'Save Student' }}
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <hr class="mt-4 mb-4">
+
+      <!-- QR Code Section -->
+      <div *ngIf="qrData" class="mt-4">
+        <h3 class="text-primary">QR Code for Student</h3>
+        <div #qrCodeElement class="mb-3">
+          <qrcode [qrdata]="qrData"></qrcode>
         </div>
         
         <!-- Download button -->
-        <button (click)="downloadQRCode()" class="btn btn-primary mb-2">Download QR Code</button>
+        <button (click)="downloadQRCode()" class="btn btn-primary mb-2">
+          Download QR Code
+        </button>
       </div>
-      
-      
-      
     </div>
   </div>
 </div>
+
+
+ 
