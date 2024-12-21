@@ -1,56 +1,61 @@
-<div class="container-fluid text-center ">
-    <div class="row content ">
-        <div class="col-sm-3 sidenav bg-light ">
-           
+<div class="container-fluid text-center py-5">
+    <div class="row content">
+        <!-- Sidebar Section -->
+        <div class="col-sm-3 sidenav bg-light p-4 shadow-sm rounded">
             <div>
-                <app-levent (editevent)="onEditEvent($event)" ></app-levent>
+                <app-levent (editevent)="onEditEvent($event)"></app-levent>
             </div>
         </div>
 
-        <div class="col-sm-9">
+        <!-- Main Content Section -->
+        <div class="col-sm-9 p-4">
+            <!-- Event Management Title -->
+            <h1 class="text-primary mb-4">Event Management</h1>
+            <hr class="my-4">
 
-            <h1>Event Management</h1>
-            <hr><br><br>
-
-            <form (ngSubmit)="onSaveEvent()">
-                <div class="col-md-6">
+            <!-- Form Section -->
+            <form (ngSubmit)="onSaveEvent()" class="p-4 bg-white rounded shadow-sm">
+                <div class="mb-3">
                     <label class="form-label text-start d-block">Title</label>
                     <input type="text" name="title" class="form-control" id="eventTitle" placeholder="Enter title" [(ngModel)]="eventObj.title" required>
                 </div>
 
-                <div class="col-md-3">
-                    <label class="form-label text-start d-block">Start Date Time</label>
-                    <input type="datetime-local" name="startDateTime" class="form-control" id="eventStartDateTime" [(ngModel)]="eventObj.startDateTime" required>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label text-start d-block">Start Date Time</label>
+                        <input type="date" name="startDateTime" class="form-control" id="eventStartDateTime" [(ngModel)]="eventObj.startDateTime" required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label text-start d-block">End Date Time</label>
+                        <input type="date" name="endDateTime" class="form-control" id="eventEndDateTime" [(ngModel)]="eventObj.endDateTime" required>
+                    </div>
                 </div>
 
-                <div class="col-md-3">
-                    <label class="form-label text-start d-block">End Date Time</label>
-                    <input type="datetime-local" name="endDateTime" class="form-control" id="eventEndDateTime" [(ngModel)]="eventObj.endDateTime" required>
-                </div>
-
-                <div class="col-md-6">
+                <div class="mb-3">
                     <label class="form-label text-start d-block">Description</label>
-                    <textarea type="text" name="description" class="form-control" id="EventDescription" [(ngModel)]="eventObj.description" required> </textarea>
+                    <textarea name="description" class="form-control" id="EventDescription" [(ngModel)]="eventObj.description" required></textarea>
                 </div>
 
-                <!-- <div class="col-md-3">
+                <!-- Uncomment below for file input if needed -->
+                <!-- 
+                <div class="col-md-3 mb-3">
                     <label class="form-label text-start d-block">Image</label>
                     <input class="form-control" type="file" id="eventImage" accept="image/*">
-                </div> -->
-                <br><br>
+                </div>
+                -->
 
-                <div class="row">
+                <div class="row mt-4">
                     <div class="col"></div>
                     <div class="col"></div>
-                    <div class="col">
-                      <button type="submit" class="btn btn-primary mb-2">
-                        {{ eventObj.eId !== 0 ? 'Update Event' : 'Save Event' }}
-                      </button>
+                    <div class="col text-end">
+                        <button type="submit" class="btn btn-primary px-5 py-2">
+                            {{ eventObj.eId !== 0 ? 'Update Event' : 'Save Event' }}
+                        </button>
                     </div>
-                  </div>
+                </div>
             </form>
-
-
         </div>
     </div>
 </div>
+

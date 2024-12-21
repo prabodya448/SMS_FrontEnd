@@ -1,28 +1,33 @@
-<div class="container-fluid text-center">
+<div class="container-fluid text-center py-5">
     <div class="row content">
-        <div class="col-sm-3 sidenav bg-light">
+        <!-- Sidebar Section -->
+        <div class="col-sm-3 sidenav bg-light p-4 rounded shadow-sm">
             <div>
                 <app-lclass (editclass)="onEditClass($event)"></app-lclass>
             </div>
         </div>
 
+        <!-- Main Form Section -->
         <div class="col-sm-9">
-            <h1 class="text-center">Class Management</h1>
-            <hr><br><br>
+            <h1 class="text-primary mb-4">Class Management</h1>
+            <hr class="my-4">
 
-            <div class="container m-4">
+            <div class="container p-4">
                 <form (ngSubmit)="onSaveClass()">
+                    <!-- Class Name Field -->
                     <div class="row mb-3">
                         <label for="className" class="col-sm-3 col-form-label text-end">Class Name:</label>
                         <div class="col-sm-6">
-                            <input type="text" id="className" class="form-control" placeholder="Input Class Name"
+                            <input type="text" id="className" class="form-control form-control-lg" placeholder="Input Class Name"
                                 name="className" [(ngModel)]="classObj.className" required>
                         </div>
                     </div>
+
+                    <!-- Subject Field -->
                     <div class="row mb-3">
                         <label for="subject" class="col-sm-3 col-form-label text-end">Subject:</label>
                         <div class="col-sm-6">
-                            <select id="subject" class="form-select" name="subject" [(ngModel)]="classObj.subject" required>
+                            <select id="subject" class="form-select form-select-lg" name="subject" [(ngModel)]="classObj.subject" required>
                                 <option selected>Select Subject</option>
                                 <option value="1">Math</option>
                                 <option value="2">Science</option>
@@ -30,10 +35,12 @@
                             </select>
                         </div>
                     </div>
+
+                    <!-- Grade Field -->
                     <div class="row mb-3">
                         <label for="grade" class="col-sm-3 col-form-label text-end">Grade:</label>
                         <div class="col-sm-6">
-                            <select id="grade" class="form-select" name="grade" [(ngModel)]="classObj.grade" required>
+                            <select id="grade" class="form-select form-select-lg" name="grade" [(ngModel)]="classObj.grade" required>
                                 <option selected>Select Grade</option>
                                 <option value="1">Grade 1</option>
                                 <option value="2">Grade 2</option>
@@ -41,17 +48,21 @@
                             </select>
                         </div>
                     </div>
+
+                    <!-- Class Fee Field -->
                     <div class="row mb-3">
                         <label for="classFee" class="col-sm-3 col-form-label text-end">Class Fee:</label>
                         <div class="col-sm-6">
-                            <input type="text" id="classFee" class="form-control" placeholder="Input Class Fee"
+                            <input type="number" id="classFee" class="form-control form-control-lg" placeholder="Input Class Fee"
                                 name="classFee" [(ngModel)]="classObj.classFee" required>
                         </div>
                     </div>
+
+                    <!-- Classroom Field -->
                     <div class="row mb-3">
                         <label for="classRoom" class="col-sm-3 col-form-label text-end">Classroom:</label>
                         <div class="col-sm-6">
-                            <select id="classRoom" class="form-select" name="classRoom" [(ngModel)]="classObj.classRoom" required>
+                            <select id="classRoom" class="form-select form-select-lg" name="classRoom" [(ngModel)]="classObj.classRoom" required>
                                 <option selected>Select Classroom</option>
                                 <option value="1">Classroom A</option>
                                 <option value="2">Classroom B</option>
@@ -59,10 +70,12 @@
                             </select>
                         </div>
                     </div>
+
+                    <!-- Class Type Field -->
                     <div class="row mb-3">
                         <label for="classType" class="col-sm-3 col-form-label text-end">Class Type:</label>
                         <div class="col-sm-6">
-                            <select id="classType" class="form-select" name="classType" [(ngModel)]="classObj.classType" required>
+                            <select id="classType" class="form-select form-select-lg" name="classType" [(ngModel)]="classObj.classType" required>
                                 <option selected>Select Class Type</option>
                                 <option value="1">Lecture</option>
                                 <option value="2">Lab</option>
@@ -70,10 +83,12 @@
                             </select>
                         </div>
                     </div>
+
+                    <!-- Tutor Field -->
                     <div class="row mb-3">
                         <label for="tutor" class="col-sm-3 col-form-label text-end">Tutor:</label>
                         <div class="col-sm-6">
-                            <select id="tutor" class="form-select" name="tutor" [(ngModel)]="classObj.tutor" required>
+                            <select id="tutor" class="form-select form-select-lg" name="tutor" [(ngModel)]="classObj.tutor" required>
                                 <option selected>Select Tutor</option>
                                 <option value="1">Tutor A</option>
                                 <option value="2">Tutor B</option>
@@ -81,17 +96,21 @@
                             </select>
                         </div>
                     </div>
+
+                    <!-- Batch Field -->
                     <div class="row mb-3">
                         <label for="batch" class="col-sm-3 col-form-label text-end">Batch:</label>
                         <div class="col-sm-6">
-                            <input type="text" id="batch" class="form-control" placeholder="Input Batch"
+                            <input type="text" id="batch" class="form-control form-control-lg" placeholder="Input Batch"
                                 name="batch" [(ngModel)]="classObj.batch" required>
                         </div>
                     </div>
+
+                    <!-- Day Field -->
                     <div class="row mb-3">
                         <label for="day" class="col-sm-3 col-form-label text-end">Day:</label>
                         <div class="col-sm-6">
-                            <select id="day" class="form-select" name="day" [(ngModel)]="classObj.day" required>
+                            <select id="day" class="form-select form-select-lg" name="day" [(ngModel)]="classObj.day" required>
                                 <option selected>Select Day</option>
                                 <option value="1">Monday</option>
                                 <option value="2">Tuesday</option>
@@ -99,20 +118,24 @@
                             </select>
                         </div>
                     </div>
+
+                    <!-- Time Fields -->
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label text-end">Time:</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" placeholder="Start Time"
+                            <input type="time" class="form-control form-control-lg" placeholder="Start Time"
                                 name="startTime" [(ngModel)]="classObj.startTime" required>
                         </div>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" placeholder="End Time"
+                            <input type="time" class="form-control form-control-lg" placeholder="End Time"
                                 name="endTime" [(ngModel)]="classObj.endTime" required>
                         </div>
                     </div>
+
+                    <!-- Submit Button -->
                     <div class="row">
                         <div class="col-sm-6 offset-sm-3 text-end">
-                            <button type="submit" class="btn btn-primary mb-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
                                 {{ classObj.cId !== 0 ? 'Update Class' : 'Save Class' }}
                             </button>
                         </div>
@@ -122,3 +145,4 @@
         </div>
     </div>
 </div>
+
