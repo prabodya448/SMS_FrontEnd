@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ZXingScannerModule } from '@zxing/ngx-scanner'; // Import QR Scanner module
 import { NgxScannerQrcodeModule, LOAD_WASM } from 'ngx-scanner-qrcode';
+import { APIResponseModel } from '../../../model/interface/user';
+import { Cattendance } from '../../../model/class/Cattendance';
 
 @Component({
   selector: 'app-fstudent-attendance-management',
@@ -17,6 +19,8 @@ import { NgxScannerQrcodeModule, LOAD_WASM } from 'ngx-scanner-qrcode';
   styleUrls: ['./fstudent-attendance-management.component.css'],
 })
 export class FstudentAttendanceManagementComponent {
+  attendanceObj: Cattendance = new Cattendance();
+  attendanceList: Cattendance[] = [];
   studentObj: CStudentManagement = new CStudentManagement(); // For a single student
   AttendanceList: CStudentManagement[] = []; // List of students for attendance
   stId: string = ''; // Input field for Student ID
@@ -83,20 +87,26 @@ export class FstudentAttendanceManagementComponent {
       return;
     }
 
-    const attendanceData = {
-      className: this.className,
-      attendanceDate: this.attendanceDate,
-      students: this.AttendanceList,
-    };
+    // const attendanceData = {
+    //   className: this.className,
+    //   attendanceDate: this.attendanceDate,
+    //   students: this.AttendanceList,
+    // };
 
-    this.studentService.submitAttendance(attendanceData).subscribe(
-      (response) => {
-        alert('Attendance submitted successfully.');
-        this.AttendanceList = []; // Clear the table after submission
-      },
-      (error) => {
-        alert('Error submitting attendance: ' + error.message);
-      }
-    );
+    this.studentService.saveattedance(this.attendanceObj).subscribe((res: APIResponseModel) => {
+            if (res.message) {
+              alert('Event added successfully. Refresh the page for updates.');
+              this.clearForm();
+            } else {
+              alert('Failed to add Event');
+            }
+          });
+        }
+
+  
+  clearForm() {
+        this.attendanceObj = new Cattendance();
   }
-}
+
+  }
+

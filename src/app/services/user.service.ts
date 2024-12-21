@@ -8,6 +8,7 @@ import { CStudentManagement } from '../model/class/CStudentManagement';
 import { CTutor } from '../model/class/CTutor';
 import { CClassManagement } from '../model/class/CClassManagement';
 import { CEventManagement } from '../model/class/CEventManagement';
+import { Cattendance } from '../model/class/Cattendance';
 
 
 @Injectable({
@@ -129,6 +130,11 @@ updateEvent(obj : CEventManagement): Observable<APIResponseModel> {
 deleteEventById(id: number): Observable<APIResponseModel> {
   return this.http.delete<APIResponseModel>(environment.API_URL + 'smsBK/eventDelete/' + id);
 }
+
+saveattedance(attendanceData: Cattendance): Observable<APIResponseModel> {
+  return this.http.post<APIResponseModel>(environment.API_URL + 'smsBK/submitAttendance', attendanceData);
+}
+
 
 }
 
