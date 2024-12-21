@@ -1,17 +1,18 @@
-<div class="input-group">
-  <input type="search" class="form-control rounded col-sm-9" placeholder="Search" [(ngModel)]="searchText" aria-label="Search" aria-describedby="search-addon" />
-  <button type="button" class="btn btn-outline-primary rounded" data-mdb-ripple-init>search</button>
+<div class="input-group mb-4">
+  <input type="search" class="form-control form-control-lg rounded-left" placeholder="Search" [(ngModel)]="searchText" aria-label="Search" aria-describedby="search-addon" />
+  <button type="button" class="btn btn-outline-primary btn-lg rounded-right" data-mdb-ripple-init>Search</button>
 </div>
 
-<div class="col">
-  <div *ngFor="let item of studentList | search:searchText; ; let i = index" class="row">
-    <div class="card">
+<div class="d-flex flex-column">
+  <div *ngFor="let item of studentList | search:searchText; let i = index" class="mb-4">
+    <div class="card shadow-lg border-light rounded-lg">
       <div class="card-body">
-        <h6 class="card-title">{{ item.stId }}</h6>
-        <h4 class="card-title">{{ item.stname }}</h4> <!-- Data binding for displaying item properties -->
-        
-        <button type="button" class="card-link" (click)="onEdit(item)">Edit User</button> 
-        <button type="button" class="card-link" (click)="onDelete(item.stId)">Delete User</button>
+        <h6 class="card-subtitle text-muted">{{ item.stId }}</h6>
+        <h5 class="card-title text-primary font-weight-bold mb-3">{{ item.stname }}</h5>
+        <div class="d-flex justify-content-between">
+          <button type="button" class="btn btn-outline-success btn-sm" (click)="onEdit(item)">Edit</button>
+          <button type="button" class="btn btn-outline-danger btn-sm" (click)="onDelete(item.stId)">Delete</button>
+        </div>
       </div>
     </div>
   </div>

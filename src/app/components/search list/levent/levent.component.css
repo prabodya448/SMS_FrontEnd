@@ -1,0 +1,32 @@
+.card {
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .card-subtitle {
+    font-size: 0.9rem;
+    word-wrap: break-word;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    word-wrap: break-word;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    word-wrap: break-word;
+  }
+  
+  .btn {
+    width: 48%;
+  }
+  

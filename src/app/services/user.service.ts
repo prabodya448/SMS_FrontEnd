@@ -8,6 +8,7 @@ import { CStudentManagement } from '../model/class/CStudentManagement';
 import { CTutor } from '../model/class/CTutor';
 import { CClassManagement } from '../model/class/CClassManagement';
 import { CEventManagement } from '../model/class/CEventManagement';
+import { CClassFee } from '../model/class/CClassFee';
 
 
 @Injectable({
@@ -128,6 +129,26 @@ updateEvent(obj : CEventManagement): Observable<APIResponseModel> {
 // Delete an event by ID
 deleteEventById(id: number): Observable<APIResponseModel> {
   return this.http.delete<APIResponseModel>(environment.API_URL + 'smsBK/eventDelete/' + id);
+}
+
+//get
+getClassFees(): Observable<APIResponseModel> {
+  return this.http.get<APIResponseModel>(environment.API_URL + 'smsBK/getAllClassFee');
+}
+
+// Save a new class fee
+saveClassFee(classFeeData: CClassFee): Observable<APIResponseModel> {
+  return this.http.post<APIResponseModel>(environment.API_URL + 'smsBK/classFeeSave', classFeeData);
+}
+
+// Update class fee by ID
+updateClassFee(classFeeData: CClassFee): Observable<APIResponseModel> {
+  return this.http.put<APIResponseModel>(environment.API_URL + 'smsBK/classFeeUpdate', classFeeData);
+}
+
+// Delete class fee by ID
+deleteClassFeeById(id: number): Observable<APIResponseModel> {
+  return this.http.delete<APIResponseModel>(environment.API_URL + 'smsBK/classFeeDelete/' + id);
 }
 
 }
