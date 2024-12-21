@@ -1,15 +1,160 @@
-.fixed-size-btn {
-  width: 200px; /* Fixed width */
-  text-align: center; /* Ensures text is centered */
+/* General Styles */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
 }
-.qr-scanner-container {
-  height: 300px; /* Set a fixed height */
-  width: 100%; /* Set a fixed width or max-width */
-  max-width: 400px; /* Limit the maximum width */
+
+.container-fluid {
+  margin-top: 30px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+hr {
+  border-top: 3px solid #1d4ed8;
+  width: 80%;
+  margin: 20px auto;
+}
+
+.sidenav {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.form-control, 
+.form-select {
+  border: 1px solid #ddd;
   border-radius: 8px;
-  background-color: #f8f9fa;
-  padding: 16px;
+  padding: 12px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus, 
+.form-select:focus {
+  border-color: #1d4ed8;
+  box-shadow: 0 0 8px rgba(29, 78, 216, 0.2);
+}
+
+button {
+  padding: 12px 18px;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Cards */
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #1d4ed8;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* QR Scanner */
+.qr-scanner-container {
+  width: 100%;
+  height: 250px;
+  background-color: #f9fafb;
+  border: 2px dashed #1d4ed8;
+  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 }
+
+/* Buttons */
+.btn-primary {
+  background-color: #1d4ed8;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #2563eb;
+}
+
+.btn-success {
+  background-color: #10b981;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #059669;
+}
+
+/* Table */
+table {
+  margin-top: 20px;
+  background: #fff;
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table thead {
+  background: #1d4ed8;
+  color: #fff;
+}
+
+table thead th {
+  padding: 12px;
+  text-align: center;
+}
+
+table tbody tr:hover {
+  background: #f1f5f9;
+}
+
+table td {
+  padding: 12px;
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .row.content {
+    flex-direction: column;
+  }
+
+  .form-label,
+  .card-title {
+    text-align: center;
+  }
+}
+
