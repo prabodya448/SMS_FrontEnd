@@ -8,7 +8,8 @@
           <div class="row mb-3">
             <div class="col-md-4">
               <label for="className" class="form-label">Class Name</label>
-              <input type="text" [(ngModel)]="className" class="form-control" id="className" placeholder="Enter Class Name" />
+              <input type="text" [(ngModel)]="className" class="form-control" id="className"
+                placeholder="Enter Class Name" />
             </div>
 
             <div class="col-md-4">
@@ -24,54 +25,58 @@
             <div class="d-flex justify-content-center align-items-center card p-3">
               <h5 class="card-title">Add Manually</h5>
               <label for="stId" class="form-label">Student ID</label>
-              <input
-                type="text"
-                [(ngModel)]="stId"
-                class="form-control"
-                id="stId"
-                name="studentId"
-                [ngModelOptions]="{standalone: true}"
-                placeholder="Enter Student ID"
-                (keyup.enter)="addStudentManually()"
-              />
-              <button type="button" class="btn btn-primary mt-2" (click)="addStudentManually()">Add Manually</button>
+              <input type="text" [(ngModel)]="stId" class="form-control" id="stId" name="studentId"
+                [ngModelOptions]="{ standalone: true }" placeholder="Enter Student ID"
+                (keyup.enter)="addStudentManually()" />
+              <button type="button" class="btn btn-primary mt-2" (click)="addStudentManually()">
+                Add Manually
+              </button>
             </div>
           </div>
 
-          <!-- Scan Code Section -->
-          <div class="col-md-6">
-            <div class="d-flex justify-content-center align-items-center card p-3">
-              <h5 class="card-title">Scan Code</h5>
-              <div class="border p-4 bg-light" style="height: 300px; width: 300px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                <p class="text-muted">QR Scanner Preview</p>
-              </div>
-              <!-- <button type="button" class="btn btn-primary mt-2" (click)="scanQrCode()">Scan QR Code</button> -->
-              <button type="button" class="btn btn-primary mt-2">Scan QR Code</button>
-            </div>
-          </div>
-        </div>
-      </form>
+          <!-- QR Scanner Section -->
 
-      <table class="table table-bordered border-secondary table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Student ID</th>
-            <th scope="col">Student Name</th>
-            <th scope="col">Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let student of AttendanceList">
-            <td>{{ student.stId }}</td>
-            <td>{{ student.stname }}</td>
-            <td>{{ student.stEmail }}</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <button type="button" class="btn btn-success mt-3" (click)="submitAttendance()">
-        Submit Today's Attendance
-      </button>
+<div class="col-md-6">
+  <div class="d-flex justify-content-center align-items-center card p-3">
+    <h5 class="card-title">Scan Code</h5>
+    <div class="qr-scanner-container">
+      <ngx-scanner-qrcode #action="scanner" (event)="onQRCodeScanned($event[0].value)"></ngx-scanner-qrcode>
+      <!-- <ngx-scanner-qrcode #action="scanner" ></ngx-scanner-qrcode> -->
     </div>
+    <span>{{ (action.data | async)?.[0]?.value }}</span>
+    <!-- <span>{{ action.data | async | json }}</span>async -->
+    <p *ngIf="action.isLoading">⌛ Loading...</p>
+    <button class="btn btn-primary mt-2 fixed-size-btn" (click)="action.isStart ? action.stop() : action.start()">{{action.isStart ? 'Stop Scanning' : 'Start Scanning'}}</button>
+    <!-- <button type="button" class="btn btn-primary mt-2 fixed-size-btn" (click)="toggleScanner()">
+      {{ scannerEnabled ? 'Stop Scanner' : 'Scan QR Code' }}
+    </button> -->
   </div>
+</div>
+
+
+    </div>
+    </form>
+
+    <table class="table table-bordered border-secondary table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Student ID</th>
+          <th scope="col">Student Name</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of AttendanceList">
+          <td>{{ student.stId }}</td>
+          <td>{{ student.stname }}</td>
+          <td>{{ student.stEmail }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button type="button" class="btn btn-success mt-3" (click)="submitAttendance()">
+      Submit Today's Attendance
+    </button>
+  </div>
+</div>
 </div>
