@@ -1,83 +1,234 @@
+<style>
+  /* General Styles */
+  body {
+    font-family: "Arial", sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+
+  .container-fluid {
+    margin-top: 20px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: #0056b3;
+  }
+
+  hr {
+    border-top: 3px solid #0056b3;
+    width: 80%;
+    margin: 15px auto;
+  }
+
+  .sidenav {
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-label {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .form-control, 
+  .form-select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .form-control:focus, 
+  .form-select:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+
+  .btn-primary {
+    background-color: #0056b3;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #004494;
+  }
+
+  .btn-success {
+    background-color: #28a745;
+    border: none;
+  }
+
+  .btn-success:hover {
+    background-color: #218838;
+  }
+
+  /* Cards */
+  .card {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0056b3;
+  }
+
+  /* Table */
+  table {
+    margin-top: 20px;
+    background: #fff;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  table thead {
+    background: #0056b3;
+    color: #fff;
+  }
+
+  table thead th {
+    padding: 10px;
+    text-align: center;
+  }
+
+  table tbody tr:hover {
+    background: #f1f1f1;
+  }
+
+  table td {
+    padding: 10px;
+    text-align: center;
+  }
+
+  /* QR Scanner */
+  .qr-scanner-container {
+    width: 100%;
+    height: 200px;
+    background-color: #f1f1f1;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .row.content {
+      flex-direction: column;
+    }
+
+    .form-label,
+    .card-title {
+      text-align: center;
+    }
+  }
+</style>
+
 <div class="container-fluid text-center">
   <div class="row content">
-    <div class="sidenav bg-light">
+    <div class="sidenav">
       <h1>Student Attendance Management</h1>
       <hr />
       <form>
         <div>
           <div class="row mb-3">
-            <div class="col-md-4">
+            <div class="col-md-6">
               <label for="className" class="form-label">Class Name</label>
-              <input type="text" [(ngModel)]="className" class="form-control" id="className"
-                placeholder="Enter Class Name" />
+              <select
+                [(ngModel)]="className"
+                class="form-control form-select"
+                id="className"
+              >
+                <option value="" disabled selected>Select a class</option>
+                <option value="A/l Maths">A/l Maths</option>
+                <option value="A/l Bio">A/l Bio</option>
+              </select>
             </div>
-
-            <div class="col-md-4">
-              <label for="attendanceDate" class="form-label">Attendance Date</label>
-              <input type="date" [(ngModel)]="attendanceDate" class="form-control" id="attendanceDate" />
-            </div>
-            <button>mark attendance</button>
           </div>
         </div>
         <hr />
-
-        <div class="row mb-4">
+        <!-- Add Manually & QR Scanner -->
+        <div *ngIf="!attendanceMarked" class="row mb-4">
           <div class="col-md-6">
-            <div class="d-flex justify-content-center align-items-center card p-3">
+            <div class="card p-3">
               <h5 class="card-title">Add Manually</h5>
               <label for="stId" class="form-label">Student ID</label>
-              <input type="text" [(ngModel)]="stId" class="form-control" id="stId" name="studentId"
-                [ngModelOptions]="{ standalone: true }" placeholder="Enter Student ID"
-                (keyup.enter)="addStudentManually()" />
-              <button type="button" class="btn btn-primary mt-2" (click)="addStudentManually()">
+              <input
+                type="text"
+                [(ngModel)]="stId"
+                class="form-control"
+                id="stId"
+                name="studentId"
+                placeholder="Enter Student ID"
+                (keyup.enter)="addStudentManually()"
+              />
+              <button
+                type="button"
+                class="btn btn-primary mt-2"
+                (click)="addStudentManually()"
+              >
                 Add Manually
               </button>
             </div>
           </div>
-
-          <!-- QR Scanner Section -->
-
-<div class="col-md-6">
-  <div class="d-flex justify-content-center align-items-center card p-3">
-    <h5 class="card-title">Scan Code</h5>
-    <div class="qr-scanner-container">
-      <ngx-scanner-qrcode #action="scanner" (event)="onQRCodeScanned($event[0].value)"></ngx-scanner-qrcode>
-      <!-- <ngx-scanner-qrcode #action="scanner" ></ngx-scanner-qrcode> -->
+          <div class="col-md-6">
+            <div class="card p-3">
+              <h5 class="card-title">Scan Code</h5>
+              <div class="qr-scanner-container">
+                <ngx-scanner-qrcode
+                  #action="scanner"
+                  (event)="onQRCodeScanned($event[0].value)"
+                ></ngx-scanner-qrcode>
+              </div>
+              <p *ngIf="action.isLoading">⌛ Loading...</p>
+              <button
+                class="btn btn-primary mt-2"
+                (click)="action.isStart ? action.stop() : action.start()"
+              >
+                Use Scanner
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- Table -->
+      <table class="table table-bordered border-secondary table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Student ID</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of AttendanceList">
+            <td>{{ student.stId }}</td>
+            <td>{{ student.stname }}</td>
+            <td>{{ student.stEmail }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Submit Button -->
+      <button
+        type="button"
+        class="btn btn-success mt-3"
+        (click)="submitAttendance()"
+      >
+        Submit Attendance
+      </button>
     </div>
-    <span>{{ (action.data | async)?.[0]?.value }}</span>
-    <!-- <span>{{ action.data | async | json }}</span>async -->
-    <p *ngIf="action.isLoading">⌛ Loading...</p>
-    <button class="btn btn-primary mt-2 fixed-size-btn" (click)="action.isStart ? action.stop() : action.start()"><!--{{action.isStart ? 'Stop Scanning' : 'Start Scanning'}} --> Use Scanner</button>
-    <!-- <button type="button" class="btn btn-primary mt-2 fixed-size-btn" (click)="toggleScanner()">
-      {{ scannerEnabled ? 'Stop Scanner' : 'Scan QR Code' }}
-    </button> -->
   </div>
-</div>
-
-
-    </div>
-    </form>
-
-    <table class="table table-bordered border-secondary table-hover">
-      <thead>
-        <tr>
-          <th scope="col">Student ID</th>
-          <th scope="col">Student Name</th>
-          <th scope="col">Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let student of AttendanceList">
-          <td>{{ student.stId }}</td>
-          <td>{{ student.stname }}</td>
-          <td>{{ student.stEmail }}</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <button type="button" class="btn btn-success mt-3" (click)="submitAttendance()">
-      Submit Today's Attendance
-    </button>
-  </div>
-</div>
 </div>
