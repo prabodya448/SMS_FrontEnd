@@ -3,49 +3,71 @@
     <!-- Sidebar Section -->
     <div class="col-sm-3 sidenav bg-light p-4 shadow-sm rounded">
       <div>
-        <p>Search list will be here</p>
+        <app-lclassfee (editclassFee)="onEditclassFee($event)"></app-lclassfee>
       </div>
     </div>
 
     <!-- Main Content Section -->
     <div class="col-sm-9">
       <!-- Class Fees Management Title -->
-      <h1 class="text-primary mb-4">Class Fees Management</h1>
+      <h1 class="text-primary mb-4 display-4 fw-bold">Class Fees Management</h1>
       <hr class="my-4">
 
       <!-- Enhanced Form Section -->
       <div class="card shadow-lg p-4 rounded-lg">
-        <form class="row g-3 needs-validation" novalidate>
-          <div class="col-md-2">
-            <label class="form-label text-start d-block">Student ID</label>
-            <input type="number" class="form-control form-control-lg" id="classFeeSID" placeholder="0000" required>
-          </div>
-
-          <div class="col-md-3">
-            <label class="form-label text-start d-block">Class Name</label>
-            <input type="text" class="form-control form-control-lg" id="classfeeClassName" placeholder="Enter Class Name" required>
-          </div>
-
-          <div class="col-md-2">
-            <label class="form-label text-start d-block">Payment Month</label>
-            <select class="form-select form-select-lg" id="classfeeSelectMonth" required>
-              <option selected disabled value="">Pick a Month</option>
-              <option>January</option>
-              <option>February</option>
-            </select>
-          </div>
-
-          <div class="col-md-2">
-            <label class="form-label text-start d-block">Class Fee</label>
-            <div class="input-group">
-              <span class="input-group-text">Rs.</span>
-              <input type="number" class="form-control form-control-lg text-end" id="classfeeEnterFee" placeholder="0.00" min="0" step="0.01" required>
+        <form (ngSubmit)="onSaveclassFee()">
+          <div class="row g-3">
+            <!-- Student ID Field -->
+            <div class="col-md-4">
+              <label class="form-label text-start d-block">Student ID</label>
+              <input type="number" class="form-control form-control-lg" id="classFeeSID" placeholder="Enter Student ID"
+                [(ngModel)]="classFeeObj.stId" name="studentId" min="0" required>
             </div>
-          </div>
 
-          <!-- Submit Button Section -->
-          <div class="col-12 text-center mt-4">
-            <button class="btn btn-primary btn-lg px-5 py-3" type="submit">Submit</button>
+            <!-- Class Name Field -->
+            <div class="col-md-4">
+              <label class="form-label text-start d-block">Class Name</label>
+              <input type="text" class="form-control form-control-lg" id="classfeeClassName" placeholder="Enter Class Name"
+                [(ngModel)]="classFeeObj.className" name="className" required>
+            </div>
+
+            <!-- Payment Month Field -->
+            <div class="col-md-4">
+              <label class="form-label text-start d-block">Payment Month</label>
+              <select class="form-select form-select-lg" id="classfeeSelectMonth" 
+                [(ngModel)]="classFeeObj.paymentMonth" name="paymentMonth" required>
+                <option selected disabled value="">Pick a Month</option>
+                <option>January</option>
+                <option>February</option>
+                <option>March</option>
+                <option>April</option>
+                <option>May</option>
+                <option>June</option>
+                <option>July</option>
+                <option>August</option>
+                <option>September</option>
+                <option>October</option>
+                <option>November</option>
+                <option>December</option>
+              </select>
+            </div>
+
+            <!-- Class Fee Field -->
+            <div class="col-md-4">
+              <label class="form-label text-start d-block">Class Fee (Rs.)</label>
+              <div class="input-group">
+                <span class="input-group-text">Rs.</span>
+                <input type="number" class="form-control form-control-lg text-end" id="classfeeEnterFee" placeholder="Enter Fee" 
+                  [(ngModel)]="classFeeObj.classFee" name="classFee" min="0" step="100" required>
+              </div>
+            </div>
+
+            <!-- Submit Button Section -->
+            <div class="col-12 text-center mt-4">
+              <button class="btn btn-primary btn-lg px-5 py-3" type="submit">
+                Submit
+              </button>
+            </div>
           </div>
         </form>
       </div>
@@ -53,4 +75,3 @@
     </div>
   </div>
 </div>
-
