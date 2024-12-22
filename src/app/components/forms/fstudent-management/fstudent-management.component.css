@@ -52,3 +52,18 @@
     border-width: 2px;
   }
 
+/* Style the QR code container to be square */
+.qrcode-container {
+  width: 200px;   /* Set your desired size */
+  height: 200px;  /* Ensure the height and width are the same */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+/* Optional: If you want to set a max size */
+.qrcode-container qrcode {
+  max-width: 100%;
+  max-height: 100%;
+}

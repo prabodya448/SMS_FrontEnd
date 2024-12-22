@@ -74,11 +74,31 @@ export class FstudentManagementComponent {
   downloadQRCode() {
     if (this.qrCodeElementRef) {
       html2canvas(this.qrCodeElementRef.nativeElement).then((canvas) => {
-        const link = document.createElement('a');
-        link.href = canvas.toDataURL();
-        link.download = `student_${this.studentObj.stId}_qrcode.png`;  // Name the file with the student ID
-        link.click();  // Trigger the download
+    
+        const width = canvas.width;
+        const height = canvas.height;
+  
+        const size = Math.max(width, height);
+  
+        const squareCanvas = document.createElement('canvas');
+        squareCanvas.width = size;
+        squareCanvas.height = size;
+
+        const ctx = squareCanvas.getContext('2d');
+
+        if (ctx) {
+          ctx.drawImage(canvas, 0, 0, width, height, 0, 0, size, size);
+
+          const link = document.createElement('a');
+          link.href = squareCanvas.toDataURL('image/png');
+          link.download = `student_${this.studentObj.stId}_qrcode.png`; 
+          link.click(); 
+        } else {
+          console.error("Unable to get 2D context for the square canvas.");
+        }
       });
     }
   }
+  
+  
 }
