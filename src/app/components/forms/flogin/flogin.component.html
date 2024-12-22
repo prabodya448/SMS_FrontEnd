@@ -38,8 +38,10 @@
         <input id="signupPassword" name="Password" [(ngModel)]="signupObj.Password" type="password" placeholder="Enter your password" required />
       </div>
       <div class="input-group">
-        <label for="licenseNumber">License Number</label>
-        <input id="licenseNumber" name="LicenseNumber" [(ngModel)]="signupObj.LicenseNumber" type="text" placeholder="Enter License Number" required />
+        <label for="licenseNumber">License Number
+          <span class="info-icon" (click)="showPopup = !showPopup">what is license number ?</span>
+        </label>
+        <input id="licenseNumber" name="LicenseNo" [(ngModel)]="signupObj.LicenseNo" type="text" placeholder="Enter License Number" required />
       </div>
       <button type="submit" class="login-btn">Sign Up Now</button>
     </form>
@@ -49,6 +51,17 @@
         {{ isSignUp ? 'Already have an account? Login here' : "Don't have an account? Create Account Now" }}
       </a>
     </p>
+  </div>
+
+  <!-- Popup Message -->
+  <div *ngIf="showPopup" class="popup-overlay">
+    <div class="popup-message">
+      <p>If you haven't a License Number, contact the system admin and buy your License.</p>
+      <p> Contac us : <a href="https://wa.me/qr/7AHMD46E53MZO1" target="_blank">Whatsapp</a>
+      </p>
+      
+      <button (click)="showPopup = false">Close</button>
+    </div>
   </div>
 
   <!-- About Us Section -->

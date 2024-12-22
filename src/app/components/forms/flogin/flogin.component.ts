@@ -20,29 +20,40 @@ export class FloginComponent {
   signupObj: any = {
     "EmailId": "",
     "Password": "",
-    "LicenseNumber": ""
+    "LicenseNo": ""
   };
 
   isSignUp: boolean = false;
+  showPopup: boolean = false;  // This controls the popup visibility
 
   http = inject(HttpClient);
 
   constructor(private router: Router) {}
 
   Onlogin() {
-    this.http.post("https://freeapi.miniprojectideas.com/api/User/Login", this.loginObj).subscribe((res: any) => {
-      if (res.result) {
-        alert("login success");
+    this.http.post("http://localhost:8000/smsBK/login", this.loginObj).subscribe((res: any) => {
+      if (res.message) {
         this.router.navigateByUrl("Fdashboard");
+        alert("Login success");
       } else {
-        alert("check username and password");
+        alert("Check username and password");
       }
     });
   }
 
   Onsignup() {
-    // Handle sign-up logic here
-    alert("Sign Up logic to be implemented!");
+    this.http.post("http://localhost:8000/smsBK/signup", this.signupObj).subscribe(
+      (res: any) => {
+        if (res === "User registered successfully") {
+          alert("Signup successful!");
+          this.isSignUp = false;
+        }
+      },
+      (error) => {
+        const errorMessage = error.error || "An error occurred during signup";
+        alert(errorMessage); // Show error message
+      }
+    );
   }
 
   toggleForm(event: MouseEvent) {

@@ -137,4 +137,49 @@ body, html {
     margin: 0.5rem 0;
     line-height: 1.5;
   }
+/* Popup styling */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-message {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  width: 300px;
+}
+
+.popup-message p {
+  margin: 10px 0;
+}
+
+.popup-message button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-message button:hover {
+  background-color: #45a049;
+}
+
+.info-icon {
+  cursor: pointer;
+  color: blue;
+  font-weight: bold;
+  margin-left: 5px;
+}
   
