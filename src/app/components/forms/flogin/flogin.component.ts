@@ -7,31 +7,46 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-flogin',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './flogin.component.html',
   styleUrls: ['./flogin.component.css']
 })
 export class FloginComponent {
-  loginObj:any={
-    "EmailId":"",
-    "Password":""
-  }
+  loginObj: any = {
+    "EmailId": "",
+    "Password": ""
+  };
 
-  http=inject(HttpClient);
+  signupObj: any = {
+    "EmailId": "",
+    "Password": "",
+    "LicenseNumber": ""
+  };
 
-  constructor(private router:Router){
+  isSignUp: boolean = false;
 
-  }
-// to use this need to open in - ng serve --port 4209
+  http = inject(HttpClient);
 
-  Onlogin(){
-    this.http.post("https://freeapi.miniprojectideas.com/api/User/Login",this.loginObj).subscribe((res:any)=>{
-      if(res.result){
-        alert("login sucsess");
-        this.router.navigateByUrl("Fdashboard")
-      }else{
-        alert("check user name and password")
+  constructor(private router: Router) {}
+
+  Onlogin() {
+    this.http.post("https://freeapi.miniprojectideas.com/api/User/Login", this.loginObj).subscribe((res: any) => {
+      if (res.result) {
+        alert("login success");
+        this.router.navigateByUrl("Fdashboard");
+      } else {
+        alert("check username and password");
       }
-    })
+    });
+  }
+
+  Onsignup() {
+    // Handle sign-up logic here
+    alert("Sign Up logic to be implemented!");
+  }
+
+  toggleForm(event: MouseEvent) {
+    event.preventDefault(); // Prevent default anchor link behavior
+    this.isSignUp = !this.isSignUp;
   }
 }

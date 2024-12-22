@@ -1,32 +1,97 @@
-
-    <div class="container-fluid">
-        <div class="row p-4">
-            <div class="col-6 card bg-white p-4 mx-auto">
-                <!-- Login Section -->
-                <h1 class="fw-bold text-center mt-2 mb-2">Opensoft-SMS</h1>
-                <p class="text-center text-muted">A project for EEY4189 - Software Design in Group</p>
-                <hr>
-                <form>
-                    <div class="mb-3">
-                        <label for="username" class="form-label fw-bold">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Enter Username" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label fw-bold">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Enter Password" required>
-                    </div>
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-warning fw-bold mb-3">Log in</button>
-                    </div>
-                    <div class="text-center">
-                        <a href="#" class="d-block mb-2 text-decoration-none">Forgot Password?</a>
-                        <button type="button" class="btn btn-outline-primary">Guest View</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col-6 d-flex align-items-center justify-content-center bg-warning">
-                
-            </div>
-        </div>
+<div class="container-fluid">
+    <div class="row p-4">
+      <div class="col-6 card bg-white p-4 mx-auto">
+        <!-- Toggle between Login and Signup Forms -->
+        <h1 class="fw-bold text-center mt-2 mb-2">Opensoft-SMS</h1>
+        <p class="text-center text-muted">
+          A project for EEY4189 - Software Design in Group
+        </p>
+        <hr />
+  
+        <!-- Login Form -->
+        <form *ngIf="!isSignUpForm">
+          <div class="mb-3">
+            <label for="username" class="form-label fw-bold">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              placeholder="Enter Username"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label fw-bold">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Enter Password"
+              required
+            />
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-warning fw-bold mb-3">
+              Log in
+            </button>
+          </div>
+          <div class="text-center">
+            <a href="#" class="d-block mb-2 text-decoration-none">Forgot Password?</a>
+            <button type="button" class="btn btn-outline-primary">
+              Guest View
+            </button>
+          </div>
+          <div class="text-center mt-3">
+            <a href="#" (click)="toggleForm()" class="text-primary text-decoration-none">Create Account Now</a>
+          </div>
+        </form>
+  
+        <!-- Signup Form -->
+        <form *ngIf="isSignUpForm">
+          <div class="mb-3">
+            <label for="signupUsername" class="form-label fw-bold">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="signupUsername"
+              placeholder="Enter Username"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="signupPassword" class="form-label fw-bold">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="signupPassword"
+              placeholder="Enter Password"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="license" class="form-label fw-bold">License Number</label>
+            <input
+              type="text"
+              class="form-control"
+              id="license"
+              placeholder="Enter License Number"
+              required
+            />
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-success fw-bold mb-3">
+              Sign Up Now
+            </button>
+          </div>
+          <div class="text-center mt-3">
+            <a href="#" (click)="toggleForm()" class="text-primary text-decoration-none">Back to Login</a>
+          </div>
+        </form>
+      </div>
+  
+      <div class="col-6 d-flex align-items-center justify-content-center bg-warning">
+        <!-- Add background design or promotional content here -->
+      </div>
     </div>
-
+  </div>
+  

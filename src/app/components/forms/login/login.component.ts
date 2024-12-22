@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  isSignUpForm: boolean = false;
 
+  toggleForm() {
+    this.isSignUpForm = !this.isSignUpForm;
+  }
 }
