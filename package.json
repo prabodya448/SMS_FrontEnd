@@ -23,6 +23,7 @@
     "@zxing/ngx-scanner": "^19.0.0",
     "angularx-qrcode": "^18.0.0",
     "bootstrap": "^5.3.3",
+    "fontawesome": "^5.6.3",
     "html2canvas": "^1.4.1",
     "ngx-scanner-qrcode": "^1.7.3",
     "ngx-spinner": "^17.0.0",

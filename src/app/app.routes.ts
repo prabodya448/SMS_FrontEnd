@@ -8,55 +8,63 @@ import { FstudentAttendanceManagementComponent } from './components/forms/fstude
 import { FuserManagementComponent } from './components/forms/fuser-management/fuser-management.component';
 import { ReportComponent } from './components/forms/report/report.component';
 import { TutorManagementComponent } from './components/forms/tutor-management/tutor-management.component';
-import { UserManagementComponent } from './components/search list/user-management/user-management.component';
+import { FloginComponent } from './components/forms/flogin/flogin.component';
+import { HeaderComponent } from './components/header/header.component';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'Fdashboard',
+        redirectTo: 'Flogin',
         pathMatch:'full'
     },
-
     {
-        path:'Fdashboard',
-        component: FdashboardComponent
+        path:'Flogin',
+        component: FloginComponent
+    },
+    {
+        path:'',
+        component: HeaderComponent,
+        children:[
+            {
+                path:'Fdashboard',
+                component: FdashboardComponent
+            },
+        
+            {
+                path:'FclassFeesManagement',
+                component: FclassFeesManagementComponent
+            },
+            {
+                path:'FclassManagement',
+                component: FclassManagementComponent
+            },
+        
+            {
+                path:'FeventManagement',
+                component: FeventManagementComponent
+            },
+            {
+                path:'FstudentManagement',
+                component: FstudentManagementComponent
+            },
+            {
+                path:'FstudentAttendance',
+                component: FstudentAttendanceManagementComponent
+            },
+            {
+                path:'FuserManagement',
+                component: FuserManagementComponent
+            },
+            {
+                path:'Report',
+                component: ReportComponent
+            },
+            {
+                path:'TutorManagementr',
+                component: TutorManagementComponent
+            },
+        ]
     },
 
-    {
-        path:'FclassFeesManagement',
-        component: FclassFeesManagementComponent
-    },
-    {
-        path:'FclassManagement',
-        component: FclassManagementComponent
-    },
 
-    {
-        path:'FeventManagement',
-        component: FeventManagementComponent
-    },
-    {
-        path:'FstudentManagement',
-        component: FstudentManagementComponent
-    },
-    {
-        path:'FstudentAttendance',
-        component: FstudentAttendanceManagementComponent
-    },
-    {
-        path:'FuserManagement',
-        component: FuserManagementComponent
-    },
-    {
-        path:'Report',
-        component: ReportComponent
-    },
-    {
-        path:'TutorManagementr',
-        component: TutorManagementComponent
-    },
-    {
-        path:'UserManagement',
-        component: UserManagementComponent,
-    },
 ];

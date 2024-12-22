@@ -1,30 +1,36 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-flogin',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './flogin.component.html',
   styleUrls: ['./flogin.component.css']
 })
 export class FloginComponent {
-  username: string = '';
-  password: string = '';
-  errorMessage: string = '';
+  loginObj:any={
+    "EmailId":"",
+    "Password":""
+  }
 
-  constructor(private router: Router) { }
+  http=inject(HttpClient);
 
-  // Method to handle form submission
-  onSubmit() {
-    // Check if username and password match the hardcoded credentials
-    if (this.username === 'prabodya' && this.password === '1234') {
-      // Redirect to the header component
-      this.router.navigate(['/header']);
-    } else {
-      // Show an error message if the credentials are incorrect
-      this.errorMessage = 'Invalid username or password!';
-    }
+  constructor(private router:Router){
+
+  }
+
+  Onlogin(){
+    this.http.post("https://freeapi.miniprojectideas.com/api/User/Login",this.loginObj).subscribe((res:any)=>{
+      if(res.result){
+        alert("login sucsess");
+        this.router.navigateByUrl("Fdashboard")
+      }else{
+        alert("check user name and password")
+      }
+    })
   }
 }
