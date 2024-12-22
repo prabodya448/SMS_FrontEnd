@@ -22,6 +22,7 @@ export class FloginComponent {
   constructor(private router:Router){
 
   }
+// to use this need to open in - ng serve --port 4209
 
   Onlogin(){
     this.http.post("https://freeapi.miniprojectideas.com/api/User/Login",this.loginObj).subscribe((res:any)=>{

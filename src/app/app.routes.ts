@@ -60,7 +60,7 @@ export const routes: Routes = [
                 component: ReportComponent
             },
             {
-                path:'TutorManagementr',
+                path:'TutorManagement',
                 component: TutorManagementComponent
             },
         ]

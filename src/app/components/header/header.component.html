@@ -6,7 +6,7 @@
       <a class="navbar-brand" href="#">
         <img src="logo 2.png" alt="SMS Logo" class="img-fluid logo-img">
       </a>
-      
+
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <!-- Dashboard Link -->
@@ -16,13 +16,13 @@
             </a>
           </li>
 
-          <!-- Type A Dropdown -->
+          <!-- For Works Dropdown -->
           <li class="nav-item me-3">
             <div class="dropdown">
               <button class="btn btn-outline-dark dropdown-toggle fs-6" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-columns-gap"></i> For Works
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="#" (click)="change_page('Reports')" routerLink="Report">Reports</a></li>
                 <li><a class="dropdown-item" href="#" (click)="change_page('Event Management')" routerLink="FeventManagement">Event Management</a></li>
               </ul>
@@ -35,7 +35,7 @@
               <button class="btn btn-outline-dark dropdown-toggle fs-6" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-person"></i> For Students
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                 <li><a class="dropdown-item" href="#" (click)="change_page('Student Management')" routerLink="FstudentManagement">Student Management</a></li>
                 <li><a class="dropdown-item" href="#" (click)="change_page('Class Fees Management')" routerLink="FclassFeesManagement">Class Fees Management</a></li>
                 <li><a class="dropdown-item" href="#" (click)="change_page('Student Attendance Management')" routerLink="FstudentAttendance">Student Attendance Management</a></li>
@@ -43,25 +43,24 @@
             </div>
           </li>
 
-          <!-- Type C Dropdown -->
+          <!-- For Class Dropdown -->
           <li class="nav-item me-3">
             <div class="dropdown">
               <button class="btn btn-outline-dark dropdown-toggle fs-6" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-cogs"></i> For Class
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
                 <li><a class="dropdown-item" href="#" (click)="change_page('Class Management')" routerLink="FclassManagement">Class Management</a></li>
-                <li><a class="dropdown-item" href="#" (click)="change_page('Tutor Management')" routerLink="/TutorManagementr">Tutor Management</a></li>
+                <li><a class="dropdown-item" href="#" (click)="change_page('Tutor Management')" routerLink="TutorManagement">Tutor Management</a></li>
               </ul>
             </div>
           </li>
-
         </ul>
       </div>
 
       <!-- Profile Button -->
-      <button type="button" class="btn btn-dark fs-6 ms-3">
-        <i class="bi bi-person-circle"></i> Profile
+      <button type="button" class="btn btn-dark fs-6 ms-3" (click)="Onsignout()">
+        Logout
       </button>
     </nav>
   </div>
