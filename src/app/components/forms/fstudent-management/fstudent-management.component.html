@@ -65,17 +65,19 @@
       <hr class="mt-4 mb-4">
 
       <!-- QR Code Section -->
-      <div *ngIf="qrData" class="mt-4">
-        <h3 class="text-primary">QR Code for Student</h3>
-        <div #qrCodeElement class="mb-3">
-          <qrcode [qrdata]="qrData"></qrcode>
-        </div>
-        
-        <!-- Download button -->
-        <button (click)="downloadQRCode()" class="btn btn-primary mb-2">
-          Download QR Code
-        </button>
-      </div>
+<!-- QR Code Section -->
+<div *ngIf="qrData" class="mt-4">
+  <h3 class="text-primary">QR Code for Student</h3>
+  <div #qrCodeElement class="qrcode-container">
+    <qrcode [qrdata]="qrData"></qrcode>
+  </div>
+  
+  <!-- Download button -->
+  <button (click)="downloadQRCode()" class="btn btn-primary mb-2">
+    Download QR Code
+  </button>
+</div>
+
     </div>
   </div>
 </div>
