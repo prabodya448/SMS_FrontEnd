@@ -9,6 +9,7 @@ import { CTutor } from '../model/class/CTutor';
 import { CClassManagement } from '../model/class/CClassManagement';
 import { CEventManagement } from '../model/class/CEventManagement';
 import { CClassFee } from '../model/class/CClassFee';
+import { CAttendance } from '../model/class/CAttendance';
 
 
 @Injectable({
@@ -64,9 +65,14 @@ export class UserService {
   //   return this.http.delete<APIResponseModel>(environment.API_URL+"smsBK/studentDelete/"+id)
   // }
 
-  submitAttendance(attendanceData: any): Observable<APIResponseModel> {
-    return this.http.post<APIResponseModel>(`${environment.API_URL}smsBK/submitAttendance`, attendanceData);
-  }
+// In UserService (make sure the return type is Observable)
+submitAttendance(attendanceData: any): Observable<any> {
+  const headers = { 'Content-Type': 'application/json' };
+  return this.http.post('http://localhost:8000/smsBK/submitAttendance', attendanceData, { headers });
+}
+
+  
+
   
   
 
