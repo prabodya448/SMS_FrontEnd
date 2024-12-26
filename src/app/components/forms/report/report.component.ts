@@ -80,8 +80,12 @@ export class ReportComponent implements OnInit{
   }
   
 
-  transformDate(date: string): string {
+  transformDate(date: string | undefined | null): string {
+    if (!date) {
+      return 'N/A'; // Fallback if date is null or undefined
+    }
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(date).toLocaleDateString('en-US', options);
   }
+  
 }
