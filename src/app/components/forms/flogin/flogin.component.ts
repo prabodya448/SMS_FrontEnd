@@ -44,7 +44,7 @@ export class FloginComponent {
   Onsignup() {
     this.http.post("http://localhost:8000/smsBK/signup", this.signupObj).subscribe(
       (res: any) => {
-        if (res === "User registered successfully") {
+        if (res.message === "User registered successfully") {
           alert("Signup successful!");
           this.isSignUp = false;
         }
