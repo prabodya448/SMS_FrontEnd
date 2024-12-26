@@ -8,7 +8,8 @@ export class CStudentManagement{
     stNic : string;
     stEmail : string;
     stAge : string;
-    
+    className: string;
+
 
  
 
@@ -22,6 +23,7 @@ export class CStudentManagement{
         this.stNic='';
         this.stEmail='';
         this.stAge='';
+        this.className='';
     }
 }
 

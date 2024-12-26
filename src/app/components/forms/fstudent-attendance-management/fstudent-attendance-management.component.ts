@@ -4,6 +4,7 @@ import { CStudentManagement } from '../../../model/class/CStudentManagement';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
+import { CAttendance } from '../../../model/class/CAttendance';
 
 @Component({
   selector: 'app-fstudent-attendance-management',
@@ -14,7 +15,7 @@ import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
 })
 export class FstudentAttendanceManagementComponent {
   studentObj: CStudentManagement = new CStudentManagement(); // Single student object
-  AttendanceList: CStudentManagement[] = []; // List of students for attendance
+  AttendanceList: CAttendance[] = []; // List of students for attendance
   stId: string = ''; // Student ID input
   className: string = ''; // Class name input
   attendanceMarked: boolean = false; // Flag to check if attendance is marked
@@ -54,36 +55,37 @@ export class FstudentAttendanceManagementComponent {
     });
   }
 
-  // Submit the attendance data
-  submitAttendance() {
-    if (!this.AttendanceList.length) {
-      alert('No students added for attendance.');
-      return;
-    }
-
-    const attendanceData = {
-      className: this.className,
-      students: this.AttendanceList,
-    };
-
-    this.studentService.submitAttendance(attendanceData).subscribe(
-      (response) => {
-        alert('Attendance submitted successfully.');
-        this.AttendanceList = []; // Clear the list after submission
-        this.attendanceMarked = true; // Set attendance marked flag
-      },
-      (error) => {
-        alert('Error submitting attendance: ' + error.message);
-      }
-    );
+ // Submit the attendance data
+submitAttendance() {
+  if (!this.AttendanceList.length) {
+    alert('No students added for attendance.');
+    return;
   }
 
-  // Mark attendance (enable or disable add and scan sections)
-  markAttendance() {
-    if (this.className) {
-      this.attendanceMarked = true; // Hide manual and scan sections
-    } else {
-      alert('Please enter the Class Name.');
+  // Adjusted structure to match only required fields
+  const attendanceData = {
+    className: this.className,
+    students: this.AttendanceList.map(student => ({
+      stId: student.stId,
+      stname: student.stname,
+      stEmail: student.stEmail
+    }))
+  };
+
+  console.log('Submitting attendance data:', attendanceData); // Log the data
+
+  this.studentService.submitAttendance(attendanceData).subscribe(
+    (response) => {
+      alert('Attendance submitted successfully.');
+      this.AttendanceList = []; // Clear the list after submission
+      this.attendanceMarked = true; // Set attendance marked flag
+    },
+    (error) => {
+      alert('Error submitting attendance: ' + error.message);
+      console.error('Error details:', error); // Log error details
     }
-  }
+  );
+}
+
+
 }
