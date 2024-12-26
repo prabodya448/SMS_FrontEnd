@@ -65,17 +65,18 @@ export class UserService {
   //   return this.http.delete<APIResponseModel>(environment.API_URL+"smsBK/studentDelete/"+id)
   // }
 
-// In UserService (make sure the return type is Observable)
+
+//attendance
+//submit attendance
 submitAttendance(attendanceData: any): Observable<any> {
   const headers = { 'Content-Type': 'application/json' };
-  return this.http.post('http://localhost:8000/smsBK/submitAttendance', attendanceData, { headers });
+  return this.http.post(environment.API_URL +'smsBK/submitAttendance', attendanceData, { headers });
 }
 
+getAttendance(): Observable<APIResponseModel> {
+  return this.http.get<APIResponseModel>(environment.API_URL + 'smsBK/getAllAttendance');
+}
   
-
-  
-  
-
 
   //tutor
 getTutor(): Observable<APIResponseModel> {
